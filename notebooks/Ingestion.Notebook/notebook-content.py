@@ -421,13 +421,13 @@ for id in country_ids_list:
 # country_ids_list = [
 #     10, # China DONE
 #     155, # USA
-#     9, # India 
-#     45, # Brazil 
-#     177, # Australia 
-#     50, # Germany 
-#     190, # Japan  
+#     9, # India DONE
+#     45, # Brazil DONE
+#     177, # Australia DONE
+#     50, # Germany DONE
+#     190, # Japan DONE
 #     99, # Senegal DONE
-#     37, # South Africa 
+#     37, # South Africa DONE
 #     192 # Iceland DONE
 # ]
 
@@ -440,7 +440,7 @@ for id in country_ids_list:
 
 # CELL ********************
 
-location_df = spark.read.format('delta').load(f'Files/Bronze/Locations/country_id=37')
+location_df = spark.read.format('delta').load(f'Files/Bronze/Locations/country_id=155')
 
 sensor_ids = location_df.select(
         explode("sensors.id").alias("sensor_id"),
@@ -463,7 +463,7 @@ window_spec = Window.orderBy("dtfUTC")
 df_rn = sensor_ids.withColumn("row_num", row_number().over(window_spec))
 target_row = (
     df_rn
-    .filter(df_rn.sensor_id == 14043983)
+    .filter(df_rn.sensor_id == 10185849)
     .select("row_num")
     .limit(1)
     .collect()[0][0]
@@ -501,7 +501,7 @@ print(after_df.count())
 
 # CELL ********************
 
-id = 37
+id = 155
 openaq_conn = OpenAQ(api_key="cca79e3b9142f47741161303bd0848bcd1da45490c5c85394a35f83f1b27a2f6")
 counter = 1
 batch = []
@@ -592,7 +592,7 @@ for row in after_df.toLocalIterator():
         most_recent_date = max_date
         max_date = None
 
-    time.sleep(2)
+    time.sleep(1)
 
 if len(batch) > 0:
         df = spark.createDataFrame(batch)
