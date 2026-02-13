@@ -2,10 +2,10 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
     "type": "Notebook",
-    "displayName": "Ingestion3"
+    "displayName": "BronzeToSilverHistorical"
   },
   "config": {
     "version": "2.0",
-    "logicalId": "90027cd6-0a52-a3a0-4bcf-efe2432bb75c"
+    "logicalId": "054fc2d0-b16a-b369-43a6-ea9964a43f0a"
   }
 }
