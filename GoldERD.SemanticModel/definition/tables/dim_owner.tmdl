@@ -1,0 +1,43 @@
+table dim_owner
+	lineageTag: a2a77c23-2f01-4095-b645-3fa5014bfb08
+	sourceLineageTag: [dbo].[dim_owner]
+
+	column owner_id
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 910aeb45-bb23-4b6a-af8f-e948ea8463c3
+		sourceLineageTag: owner_id
+		summarizeBy: none
+		sourceColumn: owner_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column owner_name
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 589d9926-816b-44cf-9171-61d8fd38f924
+		sourceLineageTag: owner_name
+		summarizeBy: none
+		sourceColumn: owner_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column country_id
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: d3e3d625-9b5c-4e97-8457-e000103d0df2
+		sourceLineageTag: country_id
+		summarizeBy: none
+		sourceColumn: country_id
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_owner = entity
+		mode: directLake
+		source
+			entityName: dim_owner
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

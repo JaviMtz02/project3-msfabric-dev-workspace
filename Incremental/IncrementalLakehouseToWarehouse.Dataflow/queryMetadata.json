@@ -1,0 +1,56 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {},
+  "name": "IncrementalLakehouseToWarehouse",
+  "queryGroups": [],
+  "documentLocale": "en-US",
+  "queriesMetadata": {
+    "p_client_day": {
+      "queryId": "65be9616-fa26-427f-8e47-a8de013adf29",
+      "queryName": "p_client_day",
+      "loadEnabled": false
+    },
+    "incremental_fact_table": {
+      "queryId": "efaeb4c3-543e-4393-bfee-dadaaf3b2d28",
+      "queryName": "incremental_fact_table"
+    },
+    "incremental_summary_area": {
+      "queryId": "f081432b-fb6a-40c1-ab64-ff1243cfafa1",
+      "queryName": "incremental_summary_area"
+    },
+    "summary_pollutant_hour": {
+      "queryId": "a83810e4-94c5-43c9-90c9-fc563cf95f77",
+      "queryName": "summary_pollutant_hour"
+    },
+    "incremental_fact_table_DataDestination": {
+      "queryId": "c09df06c-8e7d-44dc-95ec-2bd41baa3462",
+      "queryName": "incremental_fact_table_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "incremental_summary_area_DataDestination": {
+      "queryId": "c656ce5e-1f28-4070-9d13-3e5e88e44bc7",
+      "queryName": "incremental_summary_area_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "summary_pollutant_hour_DataDestination": {
+      "queryId": "886001de-6ef0-4015-a9ea-4119735272af",
+      "queryName": "summary_pollutant_hour_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"3b44e3fd-fd01-4fb9-8bbd-2e7c08f92753\",\"DatasourceId\":\"6cd1514c-fad0-4201-87b4-1613530c60a1\"}"
+    },
+    {
+      "path": "Warehouse",
+      "kind": "Warehouse",
+      "connectionId": "{\"ClusterId\":\"3b44e3fd-fd01-4fb9-8bbd-2e7c08f92753\",\"DatasourceId\":\"62543d6f-80d9-418e-ac87-11d8683f679b\"}"
+    }
+  ]
+}

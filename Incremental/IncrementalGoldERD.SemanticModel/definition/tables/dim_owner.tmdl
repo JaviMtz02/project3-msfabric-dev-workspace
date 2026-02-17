@@ -1,0 +1,38 @@
+table dim_owner
+	lineageTag: c3365f05-c442-4beb-81fb-93e8d9f59021
+	sourceLineageTag: [dbo].[dim_owner]
+
+	column owner_id
+		dataType: string
+		lineageTag: a0c06612-c28f-4225-9a98-2bf79595b08a
+		sourceLineageTag: owner_id
+		summarizeBy: none
+		sourceColumn: owner_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column owner_name
+		dataType: string
+		lineageTag: 35f6b54f-4a9f-4d60-a111-e581673bc5a7
+		sourceLineageTag: owner_name
+		summarizeBy: none
+		sourceColumn: owner_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column country_id
+		dataType: string
+		lineageTag: c8f0858a-885d-482f-a6c9-e8c7d04ab393
+		sourceLineageTag: country_id
+		summarizeBy: none
+		sourceColumn: country_id
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_owner = entity
+		mode: directLake
+		source
+			entityName: dim_owner
+			schemaName: dbo
+			expressionSource: 'DirectLake - Analytics_Warehouse'
+

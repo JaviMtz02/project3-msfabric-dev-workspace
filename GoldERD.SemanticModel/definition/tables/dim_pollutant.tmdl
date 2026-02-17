@@ -1,0 +1,53 @@
+table dim_pollutant
+	lineageTag: f962f265-c449-4c16-bf3f-4f2291b0f34b
+	sourceLineageTag: [dbo].[dim_pollutant]
+
+	column pollutant_type_id
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 4f531837-67a8-46e0-8ebf-0ef434d279db
+		sourceLineageTag: pollutant_type_id
+		summarizeBy: none
+		sourceColumn: pollutant_type_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column pollutant_name
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 279540fc-1bbc-44b8-8beb-891ca9faf976
+		sourceLineageTag: pollutant_name
+		summarizeBy: none
+		sourceColumn: pollutant_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column units
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 63e4ae92-e1ff-4f56-8e64-6267d9df49e9
+		sourceLineageTag: units
+		summarizeBy: none
+		sourceColumn: units
+
+		annotation SummarizationSetBy = Automatic
+
+	column country_id
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: b8b37454-746f-4281-a132-a4388c0637ee
+		sourceLineageTag: country_id
+		summarizeBy: none
+		sourceColumn: country_id
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_pollutant = entity
+		mode: directLake
+		source
+			entityName: dim_pollutant
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

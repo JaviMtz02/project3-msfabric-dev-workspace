@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "Batch_AQ_Pipeline"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "f9bc8829-3215-8a02-4672-3ca090a8b2b3"
+  }
+}

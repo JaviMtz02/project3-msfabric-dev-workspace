@@ -1,0 +1,89 @@
+table summary_area
+	lineageTag: f0da6400-6586-4003-9a87-6f5d3d38930c
+	sourceLineageTag: [dbo].[summary_area]
+
+	column sensor_id
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 95fb7c9d-2bb6-45fd-8b7c-c527827b310e
+		sourceLineageTag: sensor_id
+		summarizeBy: none
+		sourceColumn: sensor_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column location_id
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 130df48b-8ead-4fca-a12d-7c9696283b56
+		sourceLineageTag: location_id
+		summarizeBy: none
+		sourceColumn: location_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column country_code
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 97aff998-4556-4310-9212-1159ce43941f
+		sourceLineageTag: country_code
+		summarizeBy: none
+		sourceColumn: country_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Uptime_Start
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 83d5743c-848c-464c-8fea-387e061504bb
+		sourceLineageTag: Uptime_Start
+		summarizeBy: none
+		sourceColumn: Uptime_Start
+
+		annotation SummarizationSetBy = Automatic
+
+	column Uptime_End
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 62b27609-dc8f-4dbf-8993-1fce4ecf2563
+		sourceLineageTag: Uptime_End
+		summarizeBy: none
+		sourceColumn: Uptime_End
+
+		annotation SummarizationSetBy = Automatic
+
+	column Longitude
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 04d1d842-be8e-4e82-8f64-451078eaad55
+		sourceLineageTag: Longitude
+		summarizeBy: none
+		sourceColumn: Longitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Latitude
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 27453dba-0bc7-4c52-b496-104991eccd3f
+		sourceLineageTag: Latitude
+		summarizeBy: none
+		sourceColumn: Latitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition summary_area = entity
+		mode: directLake
+		source
+			entityName: summary_area
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,20 @@
+relationship 5877f18b-7393-0fcf-5071-82cfa0bff082
+	fromColumn: fact_table.location_id
+	toColumn: dim_location.location_id
+
+relationship 4912372b-6fef-5c03-3444-fd2a1977811f
+	fromColumn: fact_table.owner_id
+	toColumn: dim_owner.owner_id
+
+relationship 2b67e1ef-fb7c-aba0-9526-0bc5fed9a6da
+	fromColumn: fact_table.pt_id
+	toColumn: dim_pollutant.pollutant_type_id
+
+relationship bc3a9aae-e731-ce04-d171-090d732355c5
+	fromColumn: fact_table.provider_id
+	toColumn: dim_provider.provider_id
+
+relationship 4ee95971-d226-66da-893a-d5230a23d60d
+	fromColumn: fact_table.sensor_id
+	toColumn: summary_area.sensor_id
+

@@ -1,0 +1,114 @@
+table summary_pollutant_hour
+	lineageTag: da8bbe95-8fc1-4b99-a9cd-ca097d427c00
+	sourceLineageTag: [dbo].[summary_pollutant_hour]
+
+	column parent_country_id
+		dataType: string
+		lineageTag: c2b3d77e-cf5e-4dff-9efd-b52fb7b1a8c9
+		sourceLineageTag: parent_country_id
+		summarizeBy: none
+		sourceColumn: parent_country_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column country_name
+		dataType: string
+		lineageTag: 5e2d327a-af00-4c6f-bd9d-a6897ba01337
+		sourceLineageTag: country_name
+		summarizeBy: none
+		sourceColumn: country_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Area
+		dataType: string
+		lineageTag: 59979200-859c-4801-8eb9-3dc91dcd0f1c
+		sourceLineageTag: Area
+		summarizeBy: none
+		sourceColumn: Area
+
+		annotation SummarizationSetBy = Automatic
+
+	column locality
+		dataType: string
+		lineageTag: 81d1d3cd-98da-4bf8-9af8-b96313b68fb5
+		sourceLineageTag: locality
+		summarizeBy: none
+		sourceColumn: locality
+
+		annotation SummarizationSetBy = Automatic
+
+	column timezone
+		dataType: string
+		lineageTag: e0391e0d-878e-4c1e-b204-2d8a66e1a9c3
+		sourceLineageTag: timezone
+		summarizeBy: none
+		sourceColumn: timezone
+
+		annotation SummarizationSetBy = Automatic
+
+	column hour
+		dataType: int64
+		formatString: 0
+		lineageTag: ec62e2b7-90e3-42ca-93ce-5dee8e7b3b12
+		sourceLineageTag: hour
+		summarizeBy: sum
+		sourceColumn: hour
+
+		annotation SummarizationSetBy = Automatic
+
+	column units
+		dataType: string
+		lineageTag: 8249fa4f-7449-43a0-acae-aefa49c7103b
+		sourceLineageTag: units
+		summarizeBy: none
+		sourceColumn: units
+
+		annotation SummarizationSetBy = Automatic
+
+	column pollutant_name
+		dataType: string
+		lineageTag: 67d24a70-6e33-440d-8a1c-65f46013264d
+		sourceLineageTag: pollutant_name
+		summarizeBy: none
+		sourceColumn: pollutant_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column pt_id
+		dataType: string
+		lineageTag: 537e536c-f72a-4e57-ad99-2b3769dddabe
+		sourceLineageTag: pt_id
+		summarizeBy: none
+		sourceColumn: pt_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column client_day
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 0ec2f9a6-05c1-480e-931c-f96df2b1f88f
+		sourceLineageTag: client_day
+		summarizeBy: none
+		sourceColumn: client_day
+
+		annotation SummarizationSetBy = Automatic
+
+	column value
+		dataType: double
+		lineageTag: 80927320-7748-441c-83cf-053d44ce26a0
+		sourceLineageTag: value
+		summarizeBy: sum
+		sourceColumn: value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition summary_pollutant_hour = entity
+		mode: directLake
+		source
+			entityName: summary_pollutant_hour
+			schemaName: dbo
+			expressionSource: 'DirectLake - Analytics_Warehouse'
+

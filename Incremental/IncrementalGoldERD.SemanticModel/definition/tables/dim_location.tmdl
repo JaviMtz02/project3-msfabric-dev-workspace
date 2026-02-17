@@ -1,0 +1,56 @@
+table dim_location
+	lineageTag: 962ce49c-0138-44d4-94c3-f6f2c8afc1a8
+	sourceLineageTag: [dbo].[dim_location]
+
+	column location_id
+		dataType: string
+		lineageTag: 97badde6-1bb4-4069-9204-57c3406277b0
+		sourceLineageTag: location_id
+		summarizeBy: none
+		sourceColumn: location_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column area
+		dataType: string
+		lineageTag: ec6b715a-133c-4d9d-8622-ab9f26d89c6f
+		sourceLineageTag: area
+		summarizeBy: none
+		sourceColumn: area
+
+		annotation SummarizationSetBy = Automatic
+
+	column locality
+		dataType: string
+		lineageTag: a634888a-6cbe-4e24-b1a9-5cb9cfa3f0a0
+		sourceLineageTag: locality
+		summarizeBy: none
+		sourceColumn: locality
+
+		annotation SummarizationSetBy = Automatic
+
+	column timezone
+		dataType: string
+		lineageTag: 2f7bc527-5999-4567-9371-0494af156dd6
+		sourceLineageTag: timezone
+		summarizeBy: none
+		sourceColumn: timezone
+
+		annotation SummarizationSetBy = Automatic
+
+	column country_name
+		dataType: string
+		lineageTag: 1c6f2f30-be2f-4688-b825-f26948c33cb8
+		sourceLineageTag: country_name
+		summarizeBy: none
+		sourceColumn: country_name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_location = entity
+		mode: directLake
+		source
+			entityName: dim_location
+			schemaName: dbo
+			expressionSource: 'DirectLake - Analytics_Warehouse'
+

@@ -1,0 +1,106 @@
+table summary_pollutant_year
+	lineageTag: 4c849109-168d-4758-aeb8-9d5259e4e9ba
+	sourceLineageTag: [dbo].[summary_pollutant_year]
+
+	column country_name
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: de4c54f8-5213-4624-b338-5f1f34eb307d
+		sourceLineageTag: country_name
+		summarizeBy: none
+		sourceColumn: country_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Area
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 9a2bb2a4-5b26-422c-b66a-0b8cbfc2fa25
+		sourceLineageTag: Area
+		summarizeBy: none
+		sourceColumn: Area
+
+		annotation SummarizationSetBy = Automatic
+
+	column locality
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 3e48d4b2-10e3-4f5c-80bc-30ff570160a1
+		sourceLineageTag: locality
+		summarizeBy: none
+		sourceColumn: locality
+
+		annotation SummarizationSetBy = Automatic
+
+	column timezone
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 0f1650d6-d898-4e10-9c99-4a7328e88eeb
+		sourceLineageTag: timezone
+		summarizeBy: none
+		sourceColumn: timezone
+
+		annotation SummarizationSetBy = Automatic
+
+	column year
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 32471065-36ed-46bd-964f-04d10af24aac
+		sourceLineageTag: year
+		summarizeBy: sum
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	column units
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: e8824372-b77b-404a-bbe2-cc9c79e7ca4d
+		sourceLineageTag: units
+		summarizeBy: none
+		sourceColumn: units
+
+		annotation SummarizationSetBy = Automatic
+
+	column pollutant_name
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 13051cec-69c9-4b2a-8978-0ff11f1f3f14
+		sourceLineageTag: pollutant_name
+		summarizeBy: none
+		sourceColumn: pollutant_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column pt_id
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 40f88d8d-9dda-4d12-b611-b7fd166f559c
+		sourceLineageTag: pt_id
+		summarizeBy: none
+		sourceColumn: pt_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column value
+		dataType: double
+		sourceProviderType: float
+		lineageTag: ede64efd-f340-40e8-84a8-6fd8e98f8848
+		sourceLineageTag: value
+		summarizeBy: sum
+		sourceColumn: value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition summary_pollutant_year = entity
+		mode: directLake
+		source
+			entityName: summary_pollutant_year
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

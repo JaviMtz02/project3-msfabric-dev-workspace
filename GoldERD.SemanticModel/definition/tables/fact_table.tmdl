@@ -1,0 +1,117 @@
+table fact_table
+	lineageTag: 008fa0c0-e39c-4025-9a9c-05ffed252a57
+	sourceLineageTag: [dbo].[fact_table]
+
+	column parent_country_id
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: a9f6b2b4-bc5d-4a3e-86a1-998dd8a1c14b
+		sourceLineageTag: parent_country_id
+		summarizeBy: none
+		sourceColumn: parent_country_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column record_id
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 74cbfa65-0c25-4c22-a990-44132f478ed5
+		sourceLineageTag: record_id
+		summarizeBy: none
+		sourceColumn: record_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column sensor_id
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: cfdad9f5-da59-4aeb-ad54-caa8aa8cecf9
+		sourceLineageTag: sensor_id
+		summarizeBy: none
+		sourceColumn: sensor_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column location_id
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: db06df9a-a9b0-476c-8b81-82e6dee5603e
+		sourceLineageTag: location_id
+		summarizeBy: none
+		sourceColumn: location_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column provider_id
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: d2c591f7-d710-4188-b0c7-833aed9e5418
+		sourceLineageTag: provider_id
+		summarizeBy: none
+		sourceColumn: provider_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column owner_id
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: a987564d-c5da-4045-9bc5-fb5058169a6f
+		sourceLineageTag: owner_id
+		summarizeBy: none
+		sourceColumn: owner_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column pt_id
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: d8b0aae8-d06f-4ee3-968c-3938c5b8ef1c
+		sourceLineageTag: pt_id
+		summarizeBy: none
+		sourceColumn: pt_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column value
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 9bc4ea29-50fa-47ff-b48d-e23dddd1fada
+		sourceLineageTag: value
+		summarizeBy: sum
+		sourceColumn: value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Reading_Start_UTC
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 9ebd670d-6582-4f7d-90ea-ad04ddb2966e
+		sourceLineageTag: Reading_Start_UTC
+		summarizeBy: none
+		sourceColumn: Reading_Start_UTC
+
+		annotation SummarizationSetBy = Automatic
+
+	column Reading_End_UTC
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: e5dac442-c389-4844-a0bd-249871fcd244
+		sourceLineageTag: Reading_End_UTC
+		summarizeBy: none
+		sourceColumn: Reading_End_UTC
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_table = entity
+		mode: directLake
+		source
+			entityName: fact_table
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

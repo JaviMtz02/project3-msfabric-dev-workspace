@@ -1,3 +1,5 @@
 dependencies:
   - pip:
+      - pykakasi==2.3.0b1
+      - pypinyin==0.55.0
       - openaq==0.7.0

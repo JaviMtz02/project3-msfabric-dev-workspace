@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Dataflow",
+    "displayName": "IncrementalLakehouseToWarehouse"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "d16c6285-87ef-aca7-4a9f-8eb489f36c8d"
+  }
+}

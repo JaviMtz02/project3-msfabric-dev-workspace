@@ -1,0 +1,55 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {},
+  "name": "HistoricalLakehouseToWarehouse",
+  "queryGroups": [],
+  "documentLocale": "en-US",
+  "queriesMetadata": {
+    "DefaultDestination": {
+      "queryId": "a41de8a0-26fb-4b7b-932d-06f666a73423",
+      "queryName": "DefaultDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "dim_location": {
+      "queryId": "78a01bab-4b10-4d3e-8896-5ba15dc92c1d",
+      "queryName": "dim_location"
+    },
+    "dim_owner": {
+      "queryId": "bb7f5753-9dff-4951-a5aa-ccea757a06e1",
+      "queryName": "dim_owner"
+    },
+    "dim_pollutant": {
+      "queryId": "86e57890-7316-4e66-a64a-2dd8632481e5",
+      "queryName": "dim_pollutant"
+    },
+    "dim_provider": {
+      "queryId": "9b7373b9-8738-4535-a90e-48be88c50c7d",
+      "queryName": "dim_provider"
+    },
+    "fact_table": {
+      "queryId": "479ed1e1-764f-420f-9c77-40daff001f78",
+      "queryName": "fact_table"
+    },
+    "summary_area": {
+      "queryId": "d8136428-ef3c-4c29-8ffe-6f33710df074",
+      "queryName": "summary_area"
+    },
+    "summary_pollutant_year": {
+      "queryId": "faa12335-1f9f-4d7f-b780-65e355e60c86",
+      "queryName": "summary_pollutant_year"
+    }
+  },
+  "connections": [
+    {
+      "path": "Warehouse",
+      "kind": "Warehouse",
+      "connectionId": "{\"ClusterId\":\"3b44e3fd-fd01-4fb9-8bbd-2e7c08f92753\",\"DatasourceId\":\"bcb46d10-92d9-484a-ad6f-3556cf8eb8ea\"}"
+    },
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"3b44e3fd-fd01-4fb9-8bbd-2e7c08f92753\",\"DatasourceId\":\"36a5a40f-220d-4c83-896b-84d295037f5c\"}"
+    }
+  ]
+}

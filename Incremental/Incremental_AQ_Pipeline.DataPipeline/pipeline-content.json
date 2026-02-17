@@ -1,5 +1,178 @@
 {
   "properties": {
-    "activities": []
+    "activities": [
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "db8be71f-fc51-a1f6-4f70-1509f5ca297c",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "parameters": {
+            "target_date": {
+              "value": {
+                "value": "@convertFromUtc(addDays(utcNow(), -1), 'Eastern Standard Time', 'yyyy/MM/dd')",
+                "type": "Expression"
+              },
+              "type": "string"
+            }
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Incremental Ingestion Test",
+        "dependsOn": []
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "75fc4851-b7d4-b6c1-4f0d-bcc09efbda5d",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "parameters": {
+            "target_date": {
+              "value": {
+                "value": "@convertFromUtc(addDays(utcNow(), -1), 'Eastern Standard Time', 'yyyy/MM/dd')",
+                "type": "Expression"
+              },
+              "type": "string"
+            }
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "BronzeToSilverIncremental",
+        "dependsOn": [
+          {
+            "activity": "Incremental Ingestion Test",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "RefreshDataflow",
+        "typeProperties": {
+          "dataflowId": {
+            "value": "89f36c8d-8eb4-4a9f-aca7-87efd16c6285",
+            "type": "Expression"
+          },
+          "workspaceId": "38ea5278-6006-410d-8a76-80fa8b39e1e9",
+          "notifyOption": "NoNotification",
+          "parameters": {
+            "target_date": {
+              "value": "@convertFromUtc(addDays(utcNow(), -1), 'Eastern Standard Time', 'yyyy/MM/dd')",
+              "type": "String"
+            }
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "IncrementalLakehouseToWarehouse",
+        "dependsOn": [
+          {
+            "activity": "SilverToGoldIncremental",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "d75d71e2-b8a2-8320-4989-e552e4ae9852",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "parameters": {
+            "target_date": {
+              "value": "@convertFromUtc(addDays(utcNow(), -1), 'Eastern Standard Time', 'yyyy/MM/dd')",
+              "type": "string"
+            }
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "SilverToGoldIncremental",
+        "dependsOn": [
+          {
+            "activity": "BronzeToSilverIncremental",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "PBISemanticModelRefresh",
+        "typeProperties": {
+          "method": "post",
+          "groupId": "38ea5278-6006-410d-8a76-80fa8b39e1e9",
+          "datasetId": "7d46e331-1b27-4a18-9512-807b1a95f78f",
+          "commitMode": "Transactional",
+          "objects": [
+            {
+              "table": "summary_pollutant_hour"
+            },
+            {
+              "table": "dim_owner"
+            },
+            {
+              "table": "dim_location"
+            },
+            {
+              "table": "dim_pollutant"
+            },
+            {
+              "table": "dim_provider"
+            },
+            {
+              "table": "incremental_summary_area"
+            },
+            {
+              "table": "incremental_fact_table"
+            }
+          ],
+          "waitOnCompletion": true,
+          "operationType": "SemanticModelRefresh"
+        },
+        "externalReferences": {
+          "connection": "c7d21400-4891-4732-b105-2429b49869a8"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Semantic model refresh1",
+        "dependsOn": [
+          {
+            "activity": "IncrementalLakehouseToWarehouse",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ]
   }
 }

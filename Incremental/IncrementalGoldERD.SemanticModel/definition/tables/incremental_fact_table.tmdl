@@ -1,0 +1,115 @@
+table incremental_fact_table
+	lineageTag: dac1f28a-f445-4cf1-bd87-00548bde0850
+	sourceLineageTag: [dbo].[incremental_fact_table]
+
+	column parent_country_id
+		dataType: string
+		lineageTag: e6ea0eb2-27f9-4817-947c-0d31bbbd687e
+		sourceLineageTag: parent_country_id
+		summarizeBy: none
+		sourceColumn: parent_country_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column record_id
+		dataType: string
+		lineageTag: 5a381c19-10cd-4a92-9c02-f0f23ebdcd8f
+		sourceLineageTag: record_id
+		summarizeBy: none
+		sourceColumn: record_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column sensor_id
+		dataType: string
+		lineageTag: 473227ae-ad11-4c52-a557-c8298798b0c1
+		sourceLineageTag: sensor_id
+		summarizeBy: none
+		sourceColumn: sensor_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column location_id
+		dataType: string
+		lineageTag: 27d5a28a-43fb-4a7e-9c91-4ee914b6e38c
+		sourceLineageTag: location_id
+		summarizeBy: none
+		sourceColumn: location_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column provider_id
+		dataType: string
+		lineageTag: 13b9b7c8-2000-406e-af72-26fedcff0b99
+		sourceLineageTag: provider_id
+		summarizeBy: none
+		sourceColumn: provider_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column owner_id
+		dataType: string
+		lineageTag: 3a9a6ff7-2148-4a94-aa88-4da47d82964b
+		sourceLineageTag: owner_id
+		summarizeBy: none
+		sourceColumn: owner_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column pt_id
+		dataType: string
+		lineageTag: f77da4f9-f741-48da-881b-b4ebf836722e
+		sourceLineageTag: pt_id
+		summarizeBy: none
+		sourceColumn: pt_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column value
+		dataType: double
+		lineageTag: 8d9355d6-5765-475f-96e6-4ac8d72b5647
+		sourceLineageTag: value
+		summarizeBy: sum
+		sourceColumn: value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Reading_Start_UTC
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: be95fe1d-c121-4fd5-a744-49f0020a1d30
+		sourceLineageTag: Reading_Start_UTC
+		summarizeBy: none
+		sourceColumn: Reading_Start_UTC
+
+		annotation SummarizationSetBy = Automatic
+
+	column Reading_End_UTC
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 52078d60-6a0c-4907-8cac-e2e608c43519
+		sourceLineageTag: Reading_End_UTC
+		summarizeBy: none
+		sourceColumn: Reading_End_UTC
+
+		annotation SummarizationSetBy = Automatic
+
+	column client_day
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: a2f9d6d3-7587-42b5-af03-e494cc9c3031
+		sourceLineageTag: client_day
+		summarizeBy: none
+		sourceColumn: client_day
+
+		annotation SummarizationSetBy = Automatic
+
+	partition incremental_fact_table = entity
+		mode: directLake
+		source
+			entityName: incremental_fact_table
+			schemaName: dbo
+			expressionSource: 'DirectLake - Analytics_Warehouse'
+

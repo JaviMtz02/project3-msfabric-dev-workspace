@@ -1,0 +1,63 @@
+table dim_location
+	lineageTag: e0f1d112-2495-47fd-946f-6e38070974f9
+	sourceLineageTag: [dbo].[dim_location]
+
+	column location_id
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: a3935364-1a13-4522-9d84-192a427589cb
+		sourceLineageTag: location_id
+		summarizeBy: none
+		sourceColumn: location_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column area
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 4f640c61-ecdd-4803-82ee-b3ab11d57536
+		sourceLineageTag: area
+		summarizeBy: none
+		sourceColumn: area
+
+		annotation SummarizationSetBy = Automatic
+
+	column locality
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: b82a1576-69f4-46bb-8f04-fed47d7e9fef
+		sourceLineageTag: locality
+		summarizeBy: none
+		sourceColumn: locality
+
+		annotation SummarizationSetBy = Automatic
+
+	column timezone
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 473c199a-5bca-4146-891a-1cbf041f1ba6
+		sourceLineageTag: timezone
+		summarizeBy: none
+		sourceColumn: timezone
+
+		annotation SummarizationSetBy = Automatic
+
+	column country_name
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 00bfba86-ffc5-4308-8063-573af3759de6
+		sourceLineageTag: country_name
+		summarizeBy: none
+		sourceColumn: country_name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_location = entity
+		mode: directLake
+		source
+			entityName: dim_location
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+
