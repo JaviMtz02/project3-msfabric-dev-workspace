@@ -46,7 +46,8 @@ from datetime import datetime, timedelta, timezone, time as dt_time # Rename for
 import time
 from pyspark.sql import Row
 import pyspark.sql.functions as F
-from datetime import date
+from datetime import date, timedelta
+from math import fabs
 
 # METADATA ********************
 
@@ -57,7 +58,7 @@ from datetime import date
 
 # PARAMETERS CELL ********************
 
-target_date = '2026-02-15'
+target_date = '2026-02-13'
 
 # METADATA ********************
 
@@ -273,6 +274,37 @@ if batch:
     print(f"Final flush: {len(batch)} rows saved.")
 
 print("Ingestion Complete.")
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# Validation
+
+sensors_today = spark.read.format('delta') \
+                          .load(f'Files/BronzeIncremental/Sensors') \
+                          .filter(col('client_day') == target_day_only) \
+                          .select('sensor_id') \
+                          .distinct()
+
+sensors_yesterday = spark.read.format('delta') \
+                              .load(f'Files/BronzeIncremental/Sensors') \
+                              .filter(col('client_day') == (target_day_only - timedelta(days=1))) \
+                              .select('sensor_id') \
+                              .distinct()
+
+value1 = sensors_today.count()
+value2 = sensors_yesterday.count()
+
+if fabs(value1 - value2) / fabs(value2) <= (10 / 100):
+    pass
+else:
+    raise Exception('Todays sensor count not within 10% of yesterdays')
 
 # METADATA ********************
 

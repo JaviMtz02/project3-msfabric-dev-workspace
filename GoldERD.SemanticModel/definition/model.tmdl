@@ -20,4 +20,7 @@ ref table fact_table
 ref table dim_location
 ref table dim_owner
 ref table summary_pollutant_year
+ref table yoy_pollutant_analytics
+ref table sensor_count_yearly
+ref table global_and_country_pollutant_avg_yearly
 

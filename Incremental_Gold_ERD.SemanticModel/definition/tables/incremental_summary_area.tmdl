@@ -1,10 +1,10 @@
 table incremental_summary_area
-	lineageTag: c0cdd428-3535-4e8f-9744-380fe5c187e6
+	lineageTag: 54bbffd0-7396-42de-9c27-fff54a49d8c8
 	sourceLineageTag: [dbo].[incremental_summary_area]
 
 	column parent_country_id
 		dataType: string
-		lineageTag: 8f39be50-4c7d-47b2-8e7a-2e64d28ad398
+		lineageTag: 9b4a72b6-f056-4128-84c3-b698ad15eae1
 		sourceLineageTag: parent_country_id
 		summarizeBy: none
 		sourceColumn: parent_country_id
@@ -13,7 +13,7 @@ table incremental_summary_area
 
 	column sensor_id
 		dataType: string
-		lineageTag: 3b77e132-2b57-4031-8812-1a9e4fdb4586
+		lineageTag: 21f5bd13-ac70-4bf5-b1cf-bfe0a64039df
 		sourceLineageTag: sensor_id
 		summarizeBy: none
 		sourceColumn: sensor_id
@@ -22,7 +22,7 @@ table incremental_summary_area
 
 	column location_id
 		dataType: string
-		lineageTag: 382710df-341e-45ef-a5a7-fd93aeb30684
+		lineageTag: 0a101ea0-6f22-4a93-9fb7-5857bcaed01d
 		sourceLineageTag: location_id
 		summarizeBy: none
 		sourceColumn: location_id
@@ -31,7 +31,7 @@ table incremental_summary_area
 
 	column country_code
 		dataType: string
-		lineageTag: 414617ea-8dd8-4d04-be00-4547531096c8
+		lineageTag: 1c7a127c-26b5-4b12-b60a-fc006de90924
 		sourceLineageTag: country_code
 		summarizeBy: none
 		sourceColumn: country_code
@@ -41,7 +41,7 @@ table incremental_summary_area
 	column Uptime_Start
 		dataType: dateTime
 		formatString: General Date
-		lineageTag: 4a785c32-559c-4de2-bce9-b6c4bfbc70ff
+		lineageTag: 95098aba-6111-4123-9628-911fddc54ae9
 		sourceLineageTag: Uptime_Start
 		summarizeBy: none
 		sourceColumn: Uptime_Start
@@ -51,7 +51,7 @@ table incremental_summary_area
 	column Uptime_End
 		dataType: dateTime
 		formatString: General Date
-		lineageTag: 18999817-16ba-4817-b223-fc0663b99f66
+		lineageTag: 00165553-5e99-4da3-b562-52eddda0bf68
 		sourceLineageTag: Uptime_End
 		summarizeBy: none
 		sourceColumn: Uptime_End
@@ -60,9 +60,9 @@ table incremental_summary_area
 
 	column Longitude
 		dataType: double
-		lineageTag: 7c9f0eab-7206-4416-9624-2589efc572b3
+		lineageTag: 19ee142f-e305-4585-b249-ced3e4b2403d
 		sourceLineageTag: Longitude
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Longitude
 
 		annotation SummarizationSetBy = Automatic
@@ -71,9 +71,9 @@ table incremental_summary_area
 
 	column Latitude
 		dataType: double
-		lineageTag: c9a3d1c1-b484-49c4-9d3a-7cd9eba8593b
+		lineageTag: ccffedeb-caae-4d5e-b32e-31e1de605811
 		sourceLineageTag: Latitude
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Latitude
 
 		annotation SummarizationSetBy = Automatic
@@ -83,7 +83,7 @@ table incremental_summary_area
 	column client_day
 		dataType: dateTime
 		formatString: General Date
-		lineageTag: cb145caf-8014-4a26-bd5d-31d4751bb734
+		lineageTag: 62255d32-429e-4614-b593-ec0542d705a1
 		sourceLineageTag: client_day
 		summarizeBy: none
 		sourceColumn: client_day

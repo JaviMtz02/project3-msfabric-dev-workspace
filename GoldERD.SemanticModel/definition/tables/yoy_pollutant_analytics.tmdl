@@ -1,0 +1,112 @@
+table yoy_pollutant_analytics
+	lineageTag: 2e973f44-8529-4c96-8784-d7a476951342
+	sourceLineageTag: [dbo].[yoy_pollutant_analytics]
+
+	column pollutant_name
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 59cf42e7-241d-41df-b1ed-ddf9d207bb4f
+		sourceLineageTag: pollutant_name
+		summarizeBy: none
+		sourceColumn: pollutant_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column pt_id
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: e7d224e9-c5dd-4d2a-875c-e5b163666750
+		sourceLineageTag: pt_id
+		summarizeBy: none
+		sourceColumn: pt_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column units
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: c2f74c61-e6c8-47b5-a860-37a9cb21ebfd
+		sourceLineageTag: units
+		summarizeBy: none
+		sourceColumn: units
+
+		annotation SummarizationSetBy = Automatic
+
+	column year
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: d0849b03-219c-4110-a4d4-0c527f236a8d
+		sourceLineageTag: year
+		summarizeBy: none
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	column country_name
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 8e6d46f2-c8a9-43c2-b599-c0be02d5580a
+		sourceLineageTag: country_name
+		summarizeBy: none
+		sourceColumn: country_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column avg_value
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 49072596-9150-495f-b9bb-35edfaf1efdb
+		sourceLineageTag: avg_value
+		summarizeBy: none
+		sourceColumn: avg_value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column min_value
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 2f706a52-9774-4351-9335-7dbfcdfe5099
+		sourceLineageTag: min_value
+		summarizeBy: none
+		sourceColumn: min_value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column max_value
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 75ea19c4-07bc-4036-b41a-3defa91bb849
+		sourceLineageTag: max_value
+		summarizeBy: none
+		sourceColumn: max_value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column YoY_change
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 9f7abe3b-f4bd-4e24-9c95-800033555269
+		sourceLineageTag: YoY_change
+		summarizeBy: none
+		sourceColumn: YoY_change
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition yoy_pollutant_analytics = entity
+		mode: directLake
+		source
+			entityName: yoy_pollutant_analytics
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

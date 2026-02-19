@@ -1,0 +1,20 @@
+relationship 1f175300-ea7e-2c39-12f6-5dc606388780
+	fromColumn: incremental_fact_table.pt_id
+	toColumn: dim_pollutant.pollutant_type_id
+
+relationship 33134313-4d3a-67d5-bc34-85bf9a65d75f
+	fromColumn: incremental_fact_table.owner_id
+	toColumn: dim_owner.owner_id
+
+relationship bc103846-29d0-1844-0a02-9bd5506d7a0b
+	fromColumn: incremental_fact_table.location_id
+	toColumn: dim_location.location_id
+
+relationship de85a825-10f5-d1fe-a584-fea170606abc
+	fromColumn: incremental_fact_table.provider_id
+	toColumn: dim_provider.provider_id
+
+relationship 8f37d766-a366-b7c8-6984-ad26eee9930e
+	fromColumn: incremental_fact_table.parent_country_id
+	toColumn: incremental_summary_area.parent_country_id
+

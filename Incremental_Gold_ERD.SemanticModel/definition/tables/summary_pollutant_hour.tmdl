@@ -1,10 +1,10 @@
 table summary_pollutant_hour
-	lineageTag: da8bbe95-8fc1-4b99-a9cd-ca097d427c00
+	lineageTag: 9bebf766-782b-499e-843b-5776e310cae7
 	sourceLineageTag: [dbo].[summary_pollutant_hour]
 
 	column parent_country_id
 		dataType: string
-		lineageTag: c2b3d77e-cf5e-4dff-9efd-b52fb7b1a8c9
+		lineageTag: 90416c10-0937-4daf-be4c-cce1faea70d9
 		sourceLineageTag: parent_country_id
 		summarizeBy: none
 		sourceColumn: parent_country_id
@@ -13,7 +13,7 @@ table summary_pollutant_hour
 
 	column country_name
 		dataType: string
-		lineageTag: 5e2d327a-af00-4c6f-bd9d-a6897ba01337
+		lineageTag: f2fbdb73-ff2a-4927-ad51-a6357e04382f
 		sourceLineageTag: country_name
 		summarizeBy: none
 		sourceColumn: country_name
@@ -22,7 +22,7 @@ table summary_pollutant_hour
 
 	column Area
 		dataType: string
-		lineageTag: 59979200-859c-4801-8eb9-3dc91dcd0f1c
+		lineageTag: 63b14462-f316-4dac-8fe6-e6e9bd0c552d
 		sourceLineageTag: Area
 		summarizeBy: none
 		sourceColumn: Area
@@ -31,7 +31,7 @@ table summary_pollutant_hour
 
 	column locality
 		dataType: string
-		lineageTag: 81d1d3cd-98da-4bf8-9af8-b96313b68fb5
+		lineageTag: b8594bc0-f2fa-48db-a5c3-a38fbb488fb9
 		sourceLineageTag: locality
 		summarizeBy: none
 		sourceColumn: locality
@@ -40,26 +40,36 @@ table summary_pollutant_hour
 
 	column timezone
 		dataType: string
-		lineageTag: e0391e0d-878e-4c1e-b204-2d8a66e1a9c3
+		lineageTag: 0bb4de2c-b781-45e0-8b97-eba5590d811f
 		sourceLineageTag: timezone
 		summarizeBy: none
 		sourceColumn: timezone
 
 		annotation SummarizationSetBy = Automatic
 
-	column hour
+	column hour_utc
 		dataType: int64
 		formatString: 0
-		lineageTag: ec62e2b7-90e3-42ca-93ce-5dee8e7b3b12
-		sourceLineageTag: hour
+		lineageTag: 030c4a7e-f68f-4043-b4dd-c32d7c831553
+		sourceLineageTag: hour_utc
 		summarizeBy: sum
-		sourceColumn: hour
+		sourceColumn: hour_utc
+
+		annotation SummarizationSetBy = Automatic
+
+	column hour_local
+		dataType: int64
+		formatString: 0
+		lineageTag: 513adf6e-d0a2-4909-86d7-5f756e46c6a2
+		sourceLineageTag: hour_local
+		summarizeBy: sum
+		sourceColumn: hour_local
 
 		annotation SummarizationSetBy = Automatic
 
 	column units
 		dataType: string
-		lineageTag: 8249fa4f-7449-43a0-acae-aefa49c7103b
+		lineageTag: f201fece-ca89-46a9-8e88-9d2568fb3b90
 		sourceLineageTag: units
 		summarizeBy: none
 		sourceColumn: units
@@ -68,7 +78,7 @@ table summary_pollutant_hour
 
 	column pollutant_name
 		dataType: string
-		lineageTag: 67d24a70-6e33-440d-8a1c-65f46013264d
+		lineageTag: 3420360e-2e66-45ae-a96a-6d4c90e49b7a
 		sourceLineageTag: pollutant_name
 		summarizeBy: none
 		sourceColumn: pollutant_name
@@ -77,7 +87,7 @@ table summary_pollutant_hour
 
 	column pt_id
 		dataType: string
-		lineageTag: 537e536c-f72a-4e57-ad99-2b3769dddabe
+		lineageTag: 8852d97e-06f1-4086-b168-bad6698f2df1
 		sourceLineageTag: pt_id
 		summarizeBy: none
 		sourceColumn: pt_id
@@ -87,7 +97,7 @@ table summary_pollutant_hour
 	column client_day
 		dataType: dateTime
 		formatString: General Date
-		lineageTag: 0ec2f9a6-05c1-480e-931c-f96df2b1f88f
+		lineageTag: b7a67f2a-d750-4f59-a6e9-8dc3971d37dc
 		sourceLineageTag: client_day
 		summarizeBy: none
 		sourceColumn: client_day
@@ -96,7 +106,7 @@ table summary_pollutant_hour
 
 	column value
 		dataType: double
-		lineageTag: 80927320-7748-441c-83cf-053d44ce26a0
+		lineageTag: b2aa7a92-4297-4c26-b569-8b5b94b0e6e5
 		sourceLineageTag: value
 		summarizeBy: sum
 		sourceColumn: value

@@ -69,7 +69,10 @@
           "notifyOption": "NoNotification",
           "parameters": {
             "target_date": {
-              "value": "@convertFromUtc(addDays(utcNow(), -1), 'Eastern Standard Time', 'yyyy/MM/dd')",
+              "value": {
+                "value": "@convertFromUtc(addDays(utcNow(), -1), 'Eastern Standard Time', 'yyyy/MM/dd')",
+                "type": "Expression"
+              },
               "type": "String"
             }
           }
@@ -98,7 +101,10 @@
           "workspaceId": "00000000-0000-0000-0000-000000000000",
           "parameters": {
             "target_date": {
-              "value": "@convertFromUtc(addDays(utcNow(), -1), 'Eastern Standard Time', 'yyyy/MM/dd')",
+              "value": {
+                "value": "@convertFromUtc(addDays(utcNow(), -1), 'Eastern Standard Time', 'yyyy/MM/dd')",
+                "type": "Expression"
+              },
               "type": "string"
             }
           }
@@ -121,40 +127,14 @@
         ]
       },
       {
-        "type": "PBISemanticModelRefresh",
+        "type": "MicrosoftTeams",
         "typeProperties": {
-          "method": "post",
-          "groupId": "38ea5278-6006-410d-8a76-80fa8b39e1e9",
-          "datasetId": "7d46e331-1b27-4a18-9512-807b1a95f78f",
-          "commitMode": "Transactional",
-          "objects": [
-            {
-              "table": "summary_pollutant_hour"
-            },
-            {
-              "table": "dim_owner"
-            },
-            {
-              "table": "dim_location"
-            },
-            {
-              "table": "dim_pollutant"
-            },
-            {
-              "table": "dim_provider"
-            },
-            {
-              "table": "incremental_summary_area"
-            },
-            {
-              "table": "incremental_fact_table"
-            }
-          ],
-          "waitOnCompletion": true,
-          "operationType": "SemanticModelRefresh"
+          "content": "<p>Error/Failed Incremental Ingestion Notebook! Enter Fabric for more details</p>",
+          "chatId": "19:meeting_MjMxOTJiMTYtMTZlMS00OWQ1LTkyYmMtNGY3MjRiOGQwYTc5@thread.v2",
+          "operationType": "SendMessageInGroupChat"
         },
         "externalReferences": {
-          "connection": "c7d21400-4891-4732-b105-2429b49869a8"
+          "connection": "54ba2401-9489-4d21-ac72-c7c47eeead32"
         },
         "policy": {
           "timeout": "0.12:00:00",
@@ -163,12 +143,93 @@
           "secureInput": false,
           "secureOutput": false
         },
-        "name": "Semantic model refresh1",
+        "name": "Ping Error Incremental Ingestion",
+        "dependsOn": [
+          {
+            "activity": "Incremental Ingestion Test",
+            "dependencyConditions": [
+              "Failed"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "MicrosoftTeams",
+        "typeProperties": {
+          "content": "<p>Error/Failed Bronze to Silver Incremental Notebook! Enter Fabric for more details.</p>",
+          "chatId": "19:meeting_MjMxOTJiMTYtMTZlMS00OWQ1LTkyYmMtNGY3MjRiOGQwYTc5@thread.v2",
+          "operationType": "SendMessageInGroupChat"
+        },
+        "externalReferences": {
+          "connection": "54ba2401-9489-4d21-ac72-c7c47eeead32"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Ping Error Bronze To Silver Incremental",
+        "dependsOn": [
+          {
+            "activity": "BronzeToSilverIncremental",
+            "dependencyConditions": [
+              "Failed"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "MicrosoftTeams",
+        "typeProperties": {
+          "content": "<p>Error/Failed Silver to Gold Incremental Notebook! Enter Fabric for more details</p>",
+          "chatId": "19:meeting_MjMxOTJiMTYtMTZlMS00OWQ1LTkyYmMtNGY3MjRiOGQwYTc5@thread.v2",
+          "operationType": "SendMessageInGroupChat"
+        },
+        "externalReferences": {
+          "connection": "54ba2401-9489-4d21-ac72-c7c47eeead32"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Ping Error Silver to Gold Incremental",
+        "dependsOn": [
+          {
+            "activity": "SilverToGoldIncremental",
+            "dependencyConditions": [
+              "Failed"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "MicrosoftTeams",
+        "typeProperties": {
+          "content": "<p>Error/Failed Lakehouse to Warehouse Dataflow! Enter Fabric for more details</p>",
+          "chatId": "19:meeting_MjMxOTJiMTYtMTZlMS00OWQ1LTkyYmMtNGY3MjRiOGQwYTc5@thread.v2",
+          "operationType": "SendMessageInGroupChat"
+        },
+        "externalReferences": {
+          "connection": "54ba2401-9489-4d21-ac72-c7c47eeead32"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Ping Error Lakehouse to Warehouse",
         "dependsOn": [
           {
             "activity": "IncrementalLakehouseToWarehouse",
             "dependencyConditions": [
-              "Succeeded"
+              "Failed"
             ]
           }
         ]

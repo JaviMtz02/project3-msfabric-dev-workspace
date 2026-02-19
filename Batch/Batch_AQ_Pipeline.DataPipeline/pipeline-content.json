@@ -4,8 +4,8 @@
       {
         "type": "TridentNotebook",
         "typeProperties": {
-          "notebookId": "15aa460f-2618-481e-8ade-d545bf29b92d",
-          "workspaceId": "38ea5278-6006-410d-8a76-80fa8b39e1e9"
+          "notebookId": "bf29b92d-d545-8ade-481e-261815aa460f",
+          "workspaceId": "00000000-0000-0000-0000-000000000000"
         },
         "policy": {
           "timeout": "0.12:00:00",
@@ -16,15 +16,13 @@
         },
         "name": "Initial Ingestion",
         "description": "Initial ingestion of 10 years worth of data for 10 countrys",
-        "state": "Inactive",
-        "onInactiveMarkAs": "Succeeded",
         "dependsOn": []
       },
       {
         "type": "TridentNotebook",
         "typeProperties": {
-          "notebookId": "64a43f0a-ea99-43a6-b369-b16a054fc2d0",
-          "workspaceId": "38ea5278-6006-410d-8a76-80fa8b39e1e9"
+          "notebookId": "054fc2d0-b16a-b369-43a6-ea9964a43f0a",
+          "workspaceId": "00000000-0000-0000-0000-000000000000"
         },
         "policy": {
           "timeout": "0.12:00:00",
@@ -34,8 +32,6 @@
           "secureOutput": false
         },
         "name": "Bronze To Silver",
-        "state": "Inactive",
-        "onInactiveMarkAs": "Succeeded",
         "dependsOn": [
           {
             "activity": "Initial Ingestion",
@@ -61,13 +57,20 @@
           "secureOutput": false
         },
         "name": "Write to warehouse",
-        "dependsOn": []
+        "dependsOn": [
+          {
+            "activity": "Silver To Gold",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
       },
       {
         "type": "TridentNotebook",
         "typeProperties": {
-          "notebookId": "312a5557-b20b-4842-92c0-ac8b381fedee",
-          "workspaceId": "38ea5278-6006-410d-8a76-80fa8b39e1e9"
+          "notebookId": "381fedee-ac8b-92c0-4842-b20b312a5557",
+          "workspaceId": "00000000-0000-0000-0000-000000000000"
         },
         "policy": {
           "timeout": "0.12:00:00",
@@ -77,13 +80,119 @@
           "secureOutput": false
         },
         "name": "Silver To Gold",
-        "state": "Inactive",
-        "onInactiveMarkAs": "Succeeded",
         "dependsOn": [
           {
             "activity": "Bronze To Silver",
             "dependencyConditions": [
               "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "MicrosoftTeams",
+        "typeProperties": {
+          "content": "<p>Initial Ingestion Notebook Failed! Enter Fabric to view where it failed.</p>",
+          "chatId": "19:meeting_MjMxOTJiMTYtMTZlMS00OWQ1LTkyYmMtNGY3MjRiOGQwYTc5@thread.v2",
+          "operationType": "SendMessageInGroupChat"
+        },
+        "externalReferences": {
+          "connection": "54ba2401-9489-4d21-ac72-c7c47eeead32"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Ping Error Initial Ingestion",
+        "dependsOn": [
+          {
+            "activity": "Initial Ingestion",
+            "dependencyConditions": [
+              "Failed"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "MicrosoftTeams",
+        "typeProperties": {
+          "content": "<p>Error in the Bronze To Silver notebook! Enter Fabric to see error.</p>",
+          "chatId": "19:meeting_MjMxOTJiMTYtMTZlMS00OWQ1LTkyYmMtNGY3MjRiOGQwYTc5@thread.v2",
+          "operationType": "SendMessageInGroupChat"
+        },
+        "externalReferences": {
+          "connection": "54ba2401-9489-4d21-ac72-c7c47eeead32"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Ping Error Bronze to Silver",
+        "dependsOn": [
+          {
+            "activity": "Bronze To Silver",
+            "dependencyConditions": [
+              "Failed"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "MicrosoftTeams",
+        "typeProperties": {
+          "content": "<p>Error in the Silver To Goldnotebook! Enter Fabric to see error.</p>",
+          "chatId": "19:meeting_MjMxOTJiMTYtMTZlMS00OWQ1LTkyYmMtNGY3MjRiOGQwYTc5@thread.v2",
+          "operationType": "SendMessageInGroupChat"
+        },
+        "externalReferences": {
+          "connection": "54ba2401-9489-4d21-ac72-c7c47eeead32"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Ping Error Silver to Gold",
+        "dependsOn": [
+          {
+            "activity": "Silver To Gold",
+            "dependencyConditions": [
+              "Failed"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "MicrosoftTeams",
+        "typeProperties": {
+          "content": "<p>Lakehouse to Warehouse dataflow failed! Enter Fabric to see error.</p>",
+          "chatId": "19:meeting_MjMxOTJiMTYtMTZlMS00OWQ1LTkyYmMtNGY3MjRiOGQwYTc5@thread.v2",
+          "operationType": "SendMessageInGroupChat"
+        },
+        "externalReferences": {
+          "connection": "54ba2401-9489-4d21-ac72-c7c47eeead32"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Ping Error Warehouse Dataflow",
+        "dependsOn": [
+          {
+            "activity": "Write to warehouse",
+            "dependencyConditions": [
+              "Failed"
             ]
           }
         ]

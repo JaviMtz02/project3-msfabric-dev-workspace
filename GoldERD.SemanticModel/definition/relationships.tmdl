@@ -18,3 +18,7 @@ relationship 4ee95971-d226-66da-893a-d5230a23d60d
 	fromColumn: fact_table.sensor_id
 	toColumn: summary_area.sensor_id
 
+relationship 708c2863-da4a-4daf-b45b-5f2dc0993724
+	fromColumn: dim_location.country_name
+	toColumn: yoy_pollutant_analytics.country_name
+

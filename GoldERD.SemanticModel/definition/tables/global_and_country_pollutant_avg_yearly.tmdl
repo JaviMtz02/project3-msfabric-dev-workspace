@@ -1,0 +1,86 @@
+table global_and_country_pollutant_avg_yearly
+	lineageTag: 3eefd982-0031-4f91-83ed-aa63fe93da21
+	sourceLineageTag: [dbo].[global_and_country_pollutant_avg_yearly]
+
+	column Level
+		dataType: string
+		sourceProviderType: varchar(7)
+		lineageTag: 75d24d34-57c3-4c67-9755-f86a419d8680
+		sourceLineageTag: Level
+		summarizeBy: none
+		sourceColumn: Level
+
+		annotation SummarizationSetBy = Automatic
+
+	column country_name
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 4831869c-8dd5-4794-9e97-376720f99eb0
+		sourceLineageTag: country_name
+		summarizeBy: none
+		sourceColumn: country_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column year
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 2ea33e35-3e81-4103-ada9-6bac9db2c82f
+		sourceLineageTag: year
+		summarizeBy: sum
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	column pt_id
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 68bf87df-6656-48d8-ac32-b029450c7992
+		sourceLineageTag: pt_id
+		summarizeBy: none
+		sourceColumn: pt_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column pollutant_name
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 88090296-c7dc-45d2-871b-5532c0958532
+		sourceLineageTag: pollutant_name
+		summarizeBy: none
+		sourceColumn: pollutant_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column units
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: c9a75f07-ec8e-470b-b1f6-f8bffed2636a
+		sourceLineageTag: units
+		summarizeBy: none
+		sourceColumn: units
+
+		annotation SummarizationSetBy = Automatic
+
+	column avg_value
+		dataType: double
+		sourceProviderType: float
+		lineageTag: d2cfba49-42d5-4e04-9fc3-ed762e775cb6
+		sourceLineageTag: avg_value
+		summarizeBy: sum
+		sourceColumn: avg_value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition global_and_country_pollutant_avg_yearly = entity
+		mode: directLake
+		source
+			entityName: global_and_country_pollutant_avg_yearly
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

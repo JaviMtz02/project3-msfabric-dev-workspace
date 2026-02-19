@@ -10,13 +10,13 @@ annotation PBI_QueryOrder = ["DirectLake - Analytics_Warehouse"]
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
-annotation PBI_ProTooling = ["DirectLakeOnOneLakeInWeb","WebModelingEdit"]
+annotation PBI_ProTooling = ["RemoteModeling","DirectLakeOnOneLakeCreatedInDesktop"]
 
-ref table summary_pollutant_hour
 ref table dim_owner
 ref table dim_location
 ref table dim_pollutant
 ref table dim_provider
-ref table incremental_summary_area
 ref table incremental_fact_table
+ref table incremental_summary_area
+ref table summary_pollutant_hour
 

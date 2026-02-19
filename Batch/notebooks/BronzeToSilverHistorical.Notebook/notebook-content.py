@@ -26,7 +26,7 @@
 
 # CELL ********************
 
-from pyspark.sql.functions import col, monotonically_increasing_id, explode, lit
+from pyspark.sql.functions import col, monotonically_increasing_id, explode, lit, create_map, lower, when
 
 country_ids_list = [
     10, # China
@@ -50,7 +50,71 @@ country_ids_list = [
 
 # CELL ********************
 
+
+
+# mw = {
+#     "co": 28.0106,
+#     "no2": 46.0055,
+#     "no": 30.006,
+#     "so2": 64.066,
+#     "o3": 47.998,
+#     "co2": 44.0095,
+#     "nox": 46.0055,
+# }
+
+# mw_map = create_map(*[x for k, v in mw.items() for x in (lit(k), lit(float(v)))])
+
+# sensor_parent = spark.read.format("delta").load("Files/Bronze/Sensors/country_id=192")
+
+# display(sensor_parent.select('pollutant_abbrev', 'units').distinct())
+
+# sensor_parent = (
+#     sensor_parent
+#     .withColumn("mw", mw_map[col("pollutant_abbrev")])
+#     .withColumn(
+#         "value",
+#          when(col("units") == "µg/m³", col("value").cast("double"))
+#          .when((col("units") == "ppb") & col("mw").isNotNull(),
+#                col("value").cast("double") * (col("mw") / lit(24.45)))
+#          .when((col("units") == "ppm") & col("mw").isNotNull(),
+#                col("value").cast("double") * (col("mw") / lit(24.45)) * lit(1000.0))
+#          .when(lower(col("units")) == "f",
+#                (col("value").cast("double") - lit(32.0)) * lit(5.0/9.0))
+#          .otherwise(col("value").cast("double"))
+#     )
+#     .withColumn(
+#         "units",
+#           when(col("units").isin("ppb", "ppm"), lit("µg/m³"))
+#          .when(lower(col("units")) == "f", lit("c"))
+#          .otherwise(col("units"))
+#     )
+# )
+
+# display(sensor_parent.select('units').distinct())
+# display(sensor_parent)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
 first_run = True
+
+mw = {
+    "co": 28.0106,
+    "no2": 46.0055,
+    "no": 30.006,
+    "so2": 64.066,
+    "o3": 47.998,
+    "co2": 44.0095,
+    "nox": 46.0055,
+}
+
+mw_map = create_map(*[x for k, v in mw.items() for x in (lit(k), lit(float(v)))])
 
 for country_id in country_ids_list:
     if first_run:
@@ -61,7 +125,25 @@ for country_id in country_ids_list:
     location_df = spark.read.format('delta').load(f'Files/Bronze/Locations/country_id={country_id}')
     sensor_parent = spark.read.format('delta').load(f'Files/Bronze/Sensors/country_id={country_id}')
 
-    sensor_parent = sensor_parent.withColumn('record_id', monotonically_increasing_id())
+    sensor_parent = sensor_parent.withColumn('record_id', monotonically_increasing_id()) \
+                                 .withColumn("mw", mw_map[col("pollutant_abbrev")]) \
+                                 .withColumn(
+                                    "value",
+                                    when(col("units") == "µg/m³", col("value").cast("double"))
+                                    .when((col("units") == "ppb") & col("mw").isNotNull(),
+                                        col("value").cast("double") * (col("mw") / lit(24.45)))
+                                    .when((col("units") == "ppm") & col("mw").isNotNull(),
+                                        col("value").cast("double") * (col("mw") / lit(24.45)) * lit(1000.0))
+                                    .when(lower(col("units")) == "f",
+                                        (col("value").cast("double") - lit(32.0)) * lit(5.0/9.0))
+                                    .otherwise(col("value").cast("double"))
+                                 ) \
+                                 .withColumn(
+                                    "units",
+                                    when(col("units").isin("ppb", "ppm"), lit("µg/m³"))
+                                    .when(lower(col("units")) == "f", lit("c"))
+                                    .otherwise(col("units"))
+                                 ).drop(col('mw'))
 
     # ============== Joined table (Setup) ==============
     join_setup = location_df.select(
@@ -126,7 +208,7 @@ for country_id in country_ids_list:
                            col('end_local').alias('Reading_End_Local'),
                            col('start_utc').alias('Reading_Start_UTC'),
                            col('end_utc').alias('Reading_End_UTC')
-                           )
+                        )
 
 
     joined.write.format('delta') \

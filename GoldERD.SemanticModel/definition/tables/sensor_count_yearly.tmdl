@@ -1,0 +1,35 @@
+table sensor_count_yearly
+	lineageTag: 764bd258-2f69-461e-a7e8-914e42ab4eed
+	sourceLineageTag: [dbo].[sensor_count_yearly]
+
+	column year
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 90e418a8-5462-4c8d-930b-c51a0ab9ca7c
+		sourceLineageTag: year
+		summarizeBy: sum
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	column OperationalSensorCount
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: cf0e1c85-68a9-4ed1-82e0-2adcf5f8da8b
+		sourceLineageTag: OperationalSensorCount
+		summarizeBy: sum
+		sourceColumn: OperationalSensorCount
+
+		annotation SummarizationSetBy = Automatic
+
+	partition sensor_count_yearly = entity
+		mode: directLake
+		source
+			entityName: sensor_count_yearly
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

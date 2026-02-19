@@ -1,0 +1,99 @@
+table incremental_summary_area
+	lineageTag: a961cbb4-2c7a-43ec-b2ff-a5edf5621408
+	sourceLineageTag: [dbo].[incremental_summary_area]
+
+	column parent_country_id
+		dataType: string
+		lineageTag: dc87a853-eb11-4921-92da-d0c561599552
+		sourceLineageTag: parent_country_id
+		summarizeBy: none
+		sourceColumn: parent_country_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column sensor_id
+		dataType: string
+		lineageTag: abfd9479-89d2-4c0a-b178-649bc58001a8
+		sourceLineageTag: sensor_id
+		summarizeBy: none
+		sourceColumn: sensor_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column location_id
+		dataType: string
+		lineageTag: 12aa5bba-c35c-4eed-b162-0edf98fab0ee
+		sourceLineageTag: location_id
+		summarizeBy: none
+		sourceColumn: location_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column country_code
+		dataType: string
+		lineageTag: b2f6af17-fc23-4af7-892d-2350edc209bc
+		sourceLineageTag: country_code
+		summarizeBy: none
+		sourceColumn: country_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Uptime_Start
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: a11178b2-9983-4cd9-89d0-77e23a3d3556
+		sourceLineageTag: Uptime_Start
+		summarizeBy: none
+		sourceColumn: Uptime_Start
+
+		annotation SummarizationSetBy = Automatic
+
+	column Uptime_End
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: d6198230-879d-4c91-ae96-e1ebc213c095
+		sourceLineageTag: Uptime_End
+		summarizeBy: none
+		sourceColumn: Uptime_End
+
+		annotation SummarizationSetBy = Automatic
+
+	column Longitude
+		dataType: double
+		lineageTag: e312a69f-f499-4b3f-a73c-d1a6159487d2
+		sourceLineageTag: Longitude
+		summarizeBy: none
+		sourceColumn: Longitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Latitude
+		dataType: double
+		lineageTag: cd60964a-b238-4029-91a4-a1f743e03a10
+		sourceLineageTag: Latitude
+		summarizeBy: none
+		sourceColumn: Latitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column client_day
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 6198fdb2-ca1a-4b23-878b-923eefdfcb1f
+		sourceLineageTag: client_day
+		summarizeBy: none
+		sourceColumn: client_day
+
+		annotation SummarizationSetBy = Automatic
+
+	partition incremental_summary_area = entity
+		mode: directLake
+		source
+			entityName: incremental_summary_area
+			schemaName: dbo
+			expressionSource: 'DirectLake - Analytics_Warehouse'
+

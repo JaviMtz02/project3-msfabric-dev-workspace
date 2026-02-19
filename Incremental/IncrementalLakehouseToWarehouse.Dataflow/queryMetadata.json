@@ -39,6 +39,66 @@
       "queryName": "summary_pollutant_hour_DataDestination",
       "isHidden": true,
       "loadEnabled": false
+    },
+    "sensor_count_daily": {
+      "queryId": "9760b768-ef85-4514-8cc3-857215dafa68",
+      "queryName": "sensor_count_daily"
+    },
+    "daily_country_pollutant_rank": {
+      "queryId": "742c2887-d334-49d2-bf62-e043680f33d3",
+      "queryName": "daily_country_pollutant_rank"
+    },
+    "daily_top_polluted_areas": {
+      "queryId": "e74822ac-cdfe-43b5-93ac-9235c2983948",
+      "queryName": "daily_top_polluted_areas"
+    },
+    "dod_pollutant_analytics": {
+      "queryId": "b5ecb7d3-c447-4724-99dd-38299f466984",
+      "queryName": "dod_pollutant_analytics"
+    },
+    "provider_count_daily": {
+      "queryId": "83bb0d28-9df1-413b-97f1-e45ed490a11f",
+      "queryName": "provider_count_daily"
+    },
+    "sensor_count_daily_DataDestination": {
+      "queryId": "6e167af6-7d53-4734-b254-4662d7e95977",
+      "queryName": "sensor_count_daily_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "daily_country_pollutant_rank_DataDestination": {
+      "queryId": "577f250d-b791-4271-a62c-aa5b1a370b50",
+      "queryName": "daily_country_pollutant_rank_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "daily_top_polluted_areas_DataDestination": {
+      "queryId": "e431d8ef-3daa-47fa-a152-8d0fde78f8df",
+      "queryName": "daily_top_polluted_areas_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "dod_pollutant_analytics_DataDestination": {
+      "queryId": "39f8a17f-a83d-4bd8-bfdc-8b9d22ee8ae8",
+      "queryName": "dod_pollutant_analytics_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "provider_count_daily_DataDestination": {
+      "queryId": "37dc83ab-6291-4494-bc8f-d32b0c35b112",
+      "queryName": "provider_count_daily_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "daily_pollutant_threshhold": {
+      "queryId": "b5aa595f-0e3f-4761-871f-557e4ab50741",
+      "queryName": "daily_pollutant_threshhold"
+    },
+    "daily_pollutant_threshhold_DataDestination": {
+      "queryId": "b7e0dfd1-b8eb-4bcf-9df0-fc967549a40b",
+      "queryName": "daily_pollutant_threshhold_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
     }
   },
   "connections": [

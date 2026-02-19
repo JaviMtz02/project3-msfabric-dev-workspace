@@ -48,10 +48,15 @@ from pyspark.sql.functions import (
     lit, 
     explode, 
     monotonically_increasing_id,
-    substring
+    substring,
+    create_map,
+    lower, 
+    when
 )
 
 from pyspark.sql.types import StructType
+from datetime import timedelta
+from math import fabs
 
 # METADATA ********************
 
@@ -110,11 +115,42 @@ target_day_only = date.fromisoformat(target_date.replace("/", "-"))
 
 wr_mode = 'overwrite'
 
+mw = {
+    "co": 28.0106,
+    "no2": 46.0055,
+    "no": 30.006,
+    "so2": 64.066,
+    "o3": 47.998,
+    "co2": 44.0095,
+    "nox": 46.0055,
+}
+
+mw_map = create_map(*[x for k, v in mw.items() for x in (lit(k), lit(float(v)))])
+
+
 for country_id in country_ids_list:
     location_df = spark.read.format('delta').load(f'Files/Bronze/Locations').filter(col('country_id') == country_id)
     sensor_parent = spark.read.format('delta').load(f'Files/BronzeIncremental/Sensors').filter((col('client_day') == target_day_only) & (col('country_id') == country_id))
 
-    sensor_parent = sensor_parent.withColumn('record_id', monotonically_increasing_id())
+    sensor_parent = sensor_parent.withColumn('record_id', monotonically_increasing_id()) \
+                                .withColumn("mw", mw_map[col("pollutant_abbrev")]) \
+                                .withColumn(
+                                    "value",
+                                    when(col("units") == "µg/m³", col("value").cast("double"))
+                                    .when((col("units") == "ppb") & col("mw").isNotNull(),
+                                        col("value").cast("double") * (col("mw") / lit(24.45)))
+                                    .when((col("units") == "ppm") & col("mw").isNotNull(),
+                                        col("value").cast("double") * (col("mw") / lit(24.45)) * lit(1000.0))
+                                    .when(lower(col("units")) == "f",
+                                        (col("value").cast("double") - lit(32.0)) * lit(5.0/9.0))
+                                    .otherwise(col("value").cast("double"))
+                                ) \
+                                .withColumn(
+                                "units",
+                                when(col("units").isin("ppb", "ppm"), lit("µg/m³"))
+                                .when(lower(col("units")) == "f", lit("c"))
+                                .otherwise(col("units"))
+                                ).drop(col('mw'))
 
     # ============== Joined table (Setup) ==============
     join_setup = location_df.select(
@@ -160,13 +196,27 @@ for country_id in country_ids_list:
 
 # CELL ********************
 
-from pyspark.sql.functions import col
+# Validation
 
-df = spark.read.format('delta').load('Tables/incremental_parenttable')
+sensors_today = spark.read.format('delta') \
+                          .load('Tables/incremental_parenttable') \
+                          .filter(col('client_day') == target_day_only) \
+                          .select('sensor_id') \
+                          .distinct()
 
-df = df.select(col('record_id'), col('Reading_Start_UTC'), col('Reading_Start_Local'))
+sensors_yesterday = spark.read.format('delta') \
+                              .load(f'Tables/incremental_parenttable') \
+                              .filter(col('client_day') == (target_day_only - timedelta(days=1))) \
+                              .select('sensor_id') \
+                              .distinct()
 
-display(df)
+value1 = sensors_today.count()
+value2 = sensors_yesterday.count()
+
+if fabs(value1 - value2) / fabs(value2) <= (10 / 100):
+    pass
+else:
+    raise Exception('Todays sensor count not within 10% of yesterdays')
 
 # METADATA ********************
 
