@@ -1,0 +1,67 @@
+table daily_pollutant_threshhold
+	lineageTag: 2a3efc3b-12fa-44c2-8fbd-ce2ba7f50bad
+	sourceLineageTag: [dbo].[daily_pollutant_threshhold]
+
+	column country_name
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: ba4bbc4e-3efe-48eb-8e1a-de3a08e9697a
+		sourceLineageTag: country_name
+		summarizeBy: none
+		sourceColumn: country_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column pt_id
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 02d06fdb-ae1f-48c0-9164-2c8f662cf655
+		sourceLineageTag: pt_id
+		summarizeBy: none
+		sourceColumn: pt_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column value
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 4929ffe6-e2f9-45e2-84d7-0fcbb9a421cd
+		sourceLineageTag: value
+		summarizeBy: sum
+		sourceColumn: value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column client_day
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: 4c661ec6-75bc-4ff6-86a6-ef5c2b29d900
+		sourceLineageTag: client_day
+		summarizeBy: none
+		sourceColumn: client_day
+
+		annotation SummarizationSetBy = Automatic
+
+	column above_threshold
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: 6526251b-a5a1-4052-b170-5c3cd59325bc
+		sourceLineageTag: above_threshold
+		summarizeBy: none
+		sourceColumn: above_threshold
+
+		annotation SummarizationSetBy = Automatic
+
+	partition daily_pollutant_threshhold = entity
+		mode: directLake
+		source
+			entityName: daily_pollutant_threshhold
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

@@ -2,10 +2,10 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
     "type": "SemanticModel",
-    "displayName": "IncrementalGoldERD"
+    "displayName": "Incremental_ERD"
   },
   "config": {
     "version": "2.0",
-    "logicalId": "be70e092-16ec-8bdc-4578-a544d862de81"
+    "logicalId": "35a481de-58b5-8024-415d-c4cff253e24c"
   }
 }

@@ -1,10 +1,11 @@
 table dim_pollutant
-	lineageTag: ef38a4fe-1a87-480c-8836-16874946b45a
+	lineageTag: 91e4c4c1-b2cb-4124-af3e-e0c349924752
 	sourceLineageTag: [dbo].[dim_pollutant]
 
 	column pollutant_type_id
 		dataType: string
-		lineageTag: b3b15b87-c5b5-4346-b859-8e8fbd7cf3a2
+		sourceProviderType: varchar(8000)
+		lineageTag: 656a0132-9b72-4afd-a625-c8c54405fc4b
 		sourceLineageTag: pollutant_type_id
 		summarizeBy: none
 		sourceColumn: pollutant_type_id
@@ -13,7 +14,8 @@ table dim_pollutant
 
 	column pollutant_name
 		dataType: string
-		lineageTag: 24534aa5-d789-493f-a026-9225ad86d8b3
+		sourceProviderType: varchar(8000)
+		lineageTag: 0e0cac0e-62e6-4fa8-9492-05253e1cea44
 		sourceLineageTag: pollutant_name
 		summarizeBy: none
 		sourceColumn: pollutant_name
@@ -22,7 +24,8 @@ table dim_pollutant
 
 	column units
 		dataType: string
-		lineageTag: 25229706-8c4d-4a47-a02f-438334ea0867
+		sourceProviderType: varchar(8000)
+		lineageTag: 9548831c-abcd-4a48-9839-d191bded2a66
 		sourceLineageTag: units
 		summarizeBy: none
 		sourceColumn: units
@@ -31,7 +34,8 @@ table dim_pollutant
 
 	column country_id
 		dataType: string
-		lineageTag: cde25ec1-d488-4f47-b07b-46f7faea57f6
+		sourceProviderType: varchar(8000)
+		lineageTag: 8a8037d9-0f3e-4460-9d2f-aebbbbe932a5
 		sourceLineageTag: country_id
 		summarizeBy: none
 		sourceColumn: country_id
@@ -43,5 +47,7 @@ table dim_pollutant
 		source
 			entityName: dim_pollutant
 			schemaName: dbo
-			expressionSource: 'DirectLake - Analytics_Warehouse'
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
 

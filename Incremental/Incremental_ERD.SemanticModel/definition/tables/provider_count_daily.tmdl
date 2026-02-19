@@ -1,0 +1,55 @@
+table provider_count_daily
+	lineageTag: 0f5548ae-b500-4b4b-9f42-eeac476456bd
+	sourceLineageTag: [dbo].[provider_count_daily]
+
+	column client_day
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: f0175b00-4ca9-45b9-a8f8-fe4ab9af21d7
+		sourceLineageTag: client_day
+		summarizeBy: none
+		sourceColumn: client_day
+
+		annotation SummarizationSetBy = Automatic
+
+	column country_name
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 98c94148-98f6-4345-b08b-e68f16682e23
+		sourceLineageTag: country_name
+		summarizeBy: none
+		sourceColumn: country_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column pt_id
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 09f749dc-e361-4d28-af21-909dccaa21b0
+		sourceLineageTag: pt_id
+		summarizeBy: none
+		sourceColumn: pt_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_providers
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 9a276ce0-15f9-4f24-bc55-819c0836405a
+		sourceLineageTag: total_providers
+		summarizeBy: none
+		sourceColumn: total_providers
+
+		annotation SummarizationSetBy = Automatic
+
+	partition provider_count_daily = entity
+		mode: directLake
+		source
+			entityName: provider_count_daily
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

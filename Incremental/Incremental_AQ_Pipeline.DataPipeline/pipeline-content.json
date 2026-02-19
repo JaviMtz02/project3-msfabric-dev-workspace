@@ -233,6 +233,77 @@
             ]
           }
         ]
+      },
+      {
+        "type": "PBISemanticModelRefresh",
+        "typeProperties": {
+          "method": "post",
+          "groupId": "38ea5278-6006-410d-8a76-80fa8b39e1e9",
+          "datasetId": "1463b7f2-a7f7-49fb-89cd-aba83a7331ed",
+          "commitMode": "Transactional",
+          "objects": [
+            {
+              "table": "dod_pollutant_analytics"
+            },
+            {
+              "table": "daily_top_polluted_areas"
+            },
+            {
+              "table": "daily_country_pollutant_rank"
+            },
+            {
+              "table": "provider_count_daily"
+            },
+            {
+              "table": "sensor_count_daily"
+            },
+            {
+              "table": "daily_pollutant_threshhold"
+            },
+            {
+              "table": "summary_pollutant_hour"
+            },
+            {
+              "table": "dim_owner"
+            },
+            {
+              "table": "dim_location"
+            },
+            {
+              "table": "dim_pollutant"
+            },
+            {
+              "table": "dim_provider"
+            },
+            {
+              "table": "incremental_summary_area"
+            },
+            {
+              "table": "incremental_fact_table"
+            }
+          ],
+          "waitOnCompletion": true,
+          "operationType": "SemanticModelRefresh"
+        },
+        "externalReferences": {
+          "connection": "c7d21400-4891-4732-b105-2429b49869a8"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Semantic model refresh1",
+        "dependsOn": [
+          {
+            "activity": "IncrementalLakehouseToWarehouse",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
       }
     ]
   }

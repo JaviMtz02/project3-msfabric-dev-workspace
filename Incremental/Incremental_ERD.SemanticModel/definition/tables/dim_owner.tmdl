@@ -1,10 +1,11 @@
 table dim_owner
-	lineageTag: 2e3cd2ee-9e2d-4625-bfce-6c56089c37e2
+	lineageTag: 9350509f-2c28-4fa4-8c88-e59e38b9a8ac
 	sourceLineageTag: [dbo].[dim_owner]
 
 	column owner_id
 		dataType: string
-		lineageTag: 3ccbcb2f-a192-4bb8-93a5-f468d85b93bd
+		sourceProviderType: varchar(8000)
+		lineageTag: 418c8f93-bcfb-458c-b957-fb1ab9435762
 		sourceLineageTag: owner_id
 		summarizeBy: none
 		sourceColumn: owner_id
@@ -13,7 +14,8 @@ table dim_owner
 
 	column owner_name
 		dataType: string
-		lineageTag: 31fb5f40-fe75-4db2-9b0a-201ff193742a
+		sourceProviderType: varchar(8000)
+		lineageTag: 6eb765df-55e2-41e6-96be-cb31815a972b
 		sourceLineageTag: owner_name
 		summarizeBy: none
 		sourceColumn: owner_name
@@ -22,7 +24,8 @@ table dim_owner
 
 	column country_id
 		dataType: string
-		lineageTag: 61dd679e-db71-4430-9698-fedd8bb8753c
+		sourceProviderType: varchar(8000)
+		lineageTag: 21a3566b-e441-4158-87d6-d7266e4ac5e1
 		sourceLineageTag: country_id
 		summarizeBy: none
 		sourceColumn: country_id
@@ -34,5 +37,7 @@ table dim_owner
 		source
 			entityName: dim_owner
 			schemaName: dbo
-			expressionSource: 'DirectLake - Analytics_Warehouse'
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
 

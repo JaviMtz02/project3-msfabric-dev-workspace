@@ -1,0 +1,30 @@
+model Model
+	culture: en-US
+	collation: Latin1_General_100_BIN2_UTF8
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["DatabaseQuery"]
+
+annotation PBI_ProTooling = ["WebModelingEdit"]
+
+ref table dod_pollutant_analytics
+ref table daily_top_polluted_areas
+ref table daily_country_pollutant_rank
+ref table sensor_count_daily
+ref table daily_pollutant_threshhold
+ref table summary_pollutant_hour
+ref table provider_count_daily
+ref table dim_owner
+ref table dim_location
+ref table dim_pollutant
+ref table dim_provider
+ref table sensor_count_yearly
+ref table incremental_summary_area
+ref table incremental_fact_table
+

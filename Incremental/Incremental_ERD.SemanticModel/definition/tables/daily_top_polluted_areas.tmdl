@@ -1,0 +1,77 @@
+table daily_top_polluted_areas
+	lineageTag: d6a568b2-fbfd-4bbc-8d89-5b1c990ffbaa
+	sourceLineageTag: [dbo].[daily_top_polluted_areas]
+
+	column client_day
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: 73270f05-221a-4d9a-8287-6d2ef9dd8164
+		sourceLineageTag: client_day
+		summarizeBy: none
+		sourceColumn: client_day
+
+		annotation SummarizationSetBy = Automatic
+
+	column country_name
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: f0013c73-5a6b-40bb-9e7e-4c99c5ff8aaa
+		sourceLineageTag: country_name
+		summarizeBy: none
+		sourceColumn: country_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column area
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 5cd91b1f-af2e-44f6-bdf6-342e6a890851
+		sourceLineageTag: area
+		summarizeBy: none
+		sourceColumn: area
+
+		annotation SummarizationSetBy = Automatic
+
+	column pt_id
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: d37f691c-0ef4-404e-9c38-e277fe23d577
+		sourceLineageTag: pt_id
+		summarizeBy: none
+		sourceColumn: pt_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_value
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 0ee06b2c-c201-4249-9c55-3cd1260f8762
+		sourceLineageTag: total_value
+		summarizeBy: sum
+		sourceColumn: total_value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column rank
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 79b5f49c-2c17-4e0a-8f21-c4146c2e75b2
+		sourceLineageTag: rank
+		summarizeBy: sum
+		sourceColumn: rank
+
+		annotation SummarizationSetBy = Automatic
+
+	partition daily_top_polluted_areas = entity
+		mode: directLake
+		source
+			entityName: daily_top_polluted_areas
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

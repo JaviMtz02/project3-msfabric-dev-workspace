@@ -1,0 +1,55 @@
+table sensor_count_daily
+	lineageTag: f2a9c440-8a1d-4676-b063-8ee418eeff7b
+	sourceLineageTag: [dbo].[sensor_count_daily]
+
+	column client_day
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: f64f5bd8-115c-43b1-a1a3-be5bfdce5db2
+		sourceLineageTag: client_day
+		summarizeBy: none
+		sourceColumn: client_day
+
+		annotation SummarizationSetBy = Automatic
+
+	column country_name
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 884e08be-e54f-4c54-bcdf-dc570b94864a
+		sourceLineageTag: country_name
+		summarizeBy: none
+		sourceColumn: country_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column pt_id
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 9eef0da0-b87f-4105-bbcc-685b58d06fc6
+		sourceLineageTag: pt_id
+		summarizeBy: none
+		sourceColumn: pt_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_sensors
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 7e867c9a-230d-4f9d-ba24-da67cb3a4949
+		sourceLineageTag: total_sensors
+		summarizeBy: none
+		sourceColumn: total_sensors
+
+		annotation SummarizationSetBy = Automatic
+
+	partition sensor_count_daily = entity
+		mode: directLake
+		source
+			entityName: sensor_count_daily
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

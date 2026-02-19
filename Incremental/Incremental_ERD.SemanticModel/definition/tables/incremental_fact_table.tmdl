@@ -1,19 +1,21 @@
 table incremental_fact_table
-	lineageTag: 3990a216-892d-4039-b972-1da96c493b09
+	lineageTag: 0664b6f0-fc03-4737-8494-b60053b73ce7
 	sourceLineageTag: [dbo].[incremental_fact_table]
 
-	column parent_country_id
+	column country_name
 		dataType: string
-		lineageTag: c9e35935-8ca6-4979-bae8-bb62ea0242ba
-		sourceLineageTag: parent_country_id
+		sourceProviderType: varchar(8000)
+		lineageTag: 977005bb-ebc9-4789-a3c8-02d5bcad4f39
+		sourceLineageTag: country_name
 		summarizeBy: none
-		sourceColumn: parent_country_id
+		sourceColumn: country_name
 
 		annotation SummarizationSetBy = Automatic
 
 	column record_id
 		dataType: string
-		lineageTag: 0af2777f-148a-4e89-a704-0381a29c5c53
+		sourceProviderType: varchar(8000)
+		lineageTag: 287fbbe8-a53b-4216-996f-d99a36f6705f
 		sourceLineageTag: record_id
 		summarizeBy: none
 		sourceColumn: record_id
@@ -22,7 +24,8 @@ table incremental_fact_table
 
 	column sensor_id
 		dataType: string
-		lineageTag: 72e0fadb-f584-46ec-bb37-e1e3b5edb3fc
+		sourceProviderType: varchar(8000)
+		lineageTag: 9c811174-6c9d-4341-9db3-e435606f99f8
 		sourceLineageTag: sensor_id
 		summarizeBy: none
 		sourceColumn: sensor_id
@@ -31,7 +34,8 @@ table incremental_fact_table
 
 	column location_id
 		dataType: string
-		lineageTag: 5a275de8-79a7-4eb3-b9ca-e85306910f06
+		sourceProviderType: varchar(8000)
+		lineageTag: b53511b8-eaa0-4d4e-b209-a99ae98c8922
 		sourceLineageTag: location_id
 		summarizeBy: none
 		sourceColumn: location_id
@@ -40,7 +44,8 @@ table incremental_fact_table
 
 	column provider_id
 		dataType: string
-		lineageTag: a1ca920d-b639-4652-9321-9b6b307086da
+		sourceProviderType: varchar(8000)
+		lineageTag: 1baf56b5-58fd-4379-a9e0-a7d64cac4c21
 		sourceLineageTag: provider_id
 		summarizeBy: none
 		sourceColumn: provider_id
@@ -49,7 +54,8 @@ table incremental_fact_table
 
 	column owner_id
 		dataType: string
-		lineageTag: d8469782-e7c7-44c5-b5b2-c3b177e3d57c
+		sourceProviderType: varchar(8000)
+		lineageTag: 8b2c4a9e-57a8-421a-8abc-1921e1f26bb5
 		sourceLineageTag: owner_id
 		summarizeBy: none
 		sourceColumn: owner_id
@@ -58,7 +64,8 @@ table incremental_fact_table
 
 	column pt_id
 		dataType: string
-		lineageTag: bd7b91c5-50d5-4341-8382-3933143f85b7
+		sourceProviderType: varchar(8000)
+		lineageTag: bdc98b0b-605c-4da4-8fbc-27bd24ddf109
 		sourceLineageTag: pt_id
 		summarizeBy: none
 		sourceColumn: pt_id
@@ -67,7 +74,8 @@ table incremental_fact_table
 
 	column value
 		dataType: double
-		lineageTag: b3fd73f7-0837-4e1d-b4e9-b2c2779b9282
+		sourceProviderType: float
+		lineageTag: f7211f99-7863-4a4e-a142-98bdbe9402f8
 		sourceLineageTag: value
 		summarizeBy: sum
 		sourceColumn: value
@@ -79,7 +87,8 @@ table incremental_fact_table
 	column Reading_Start_UTC
 		dataType: dateTime
 		formatString: General Date
-		lineageTag: e7944544-5766-47ae-84ae-9a3929b8c5ce
+		sourceProviderType: datetime2
+		lineageTag: 7c6c73ad-7048-44f6-a3a1-276b0878d3f4
 		sourceLineageTag: Reading_Start_UTC
 		summarizeBy: none
 		sourceColumn: Reading_Start_UTC
@@ -89,7 +98,8 @@ table incremental_fact_table
 	column Reading_End_UTC
 		dataType: dateTime
 		formatString: General Date
-		lineageTag: 06d383f9-de15-4dfc-84ea-ea7f301a3ef9
+		sourceProviderType: datetime2
+		lineageTag: 99f12c17-a796-4233-8f2e-570deeeb8c66
 		sourceLineageTag: Reading_End_UTC
 		summarizeBy: none
 		sourceColumn: Reading_End_UTC
@@ -99,7 +109,8 @@ table incremental_fact_table
 	column Reading_Start_Local
 		dataType: dateTime
 		formatString: General Date
-		lineageTag: 1796ed5f-2024-42ff-9ea1-45a56b46dce7
+		sourceProviderType: datetime2
+		lineageTag: 1fb1db17-77b6-4831-aaf0-9e8316969d3a
 		sourceLineageTag: Reading_Start_Local
 		summarizeBy: none
 		sourceColumn: Reading_Start_Local
@@ -109,7 +120,8 @@ table incremental_fact_table
 	column Reading_End_Local
 		dataType: dateTime
 		formatString: General Date
-		lineageTag: a498bea9-d973-4362-981a-fcbe2f809424
+		sourceProviderType: datetime2
+		lineageTag: 74b0eb50-3e33-4895-ae37-f8cfd83c59a6
 		sourceLineageTag: Reading_End_Local
 		summarizeBy: none
 		sourceColumn: Reading_End_Local
@@ -119,7 +131,8 @@ table incremental_fact_table
 	column client_day
 		dataType: dateTime
 		formatString: General Date
-		lineageTag: bb513072-aa1d-4738-83f6-c02a72a224bf
+		sourceProviderType: date
+		lineageTag: 36278ebe-00f9-4a87-8385-9345a246f5cc
 		sourceLineageTag: client_day
 		summarizeBy: none
 		sourceColumn: client_day
@@ -131,5 +144,7 @@ table incremental_fact_table
 		source
 			entityName: incremental_fact_table
 			schemaName: dbo
-			expressionSource: 'DirectLake - Analytics_Warehouse'
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
 

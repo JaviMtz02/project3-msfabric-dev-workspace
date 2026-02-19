@@ -1,0 +1,114 @@
+table dod_pollutant_analytics
+	lineageTag: ef8194bd-b617-42ef-ab5a-a30c98097c74
+	sourceLineageTag: [dbo].[dod_pollutant_analytics]
+
+	column client_day
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: e5e2efb2-c607-441f-9e50-c360c25682bf
+		sourceLineageTag: client_day
+		summarizeBy: none
+		sourceColumn: client_day
+
+		annotation SummarizationSetBy = Automatic
+
+	column country_name
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 6a28cd75-c5c4-4d87-b77d-12a5e8aded27
+		sourceLineageTag: country_name
+		summarizeBy: none
+		sourceColumn: country_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column pt_id
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: d50cd39a-0cdd-45e0-93d8-9d729163da18
+		sourceLineageTag: pt_id
+		summarizeBy: none
+		sourceColumn: pt_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column pollutant_name
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 95c78945-8ac5-45d5-8040-409364f528f0
+		sourceLineageTag: pollutant_name
+		summarizeBy: none
+		sourceColumn: pollutant_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column avg_value
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 349cb48a-e8f3-4861-8c3a-80d64191b959
+		sourceLineageTag: avg_value
+		summarizeBy: none
+		sourceColumn: avg_value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column min_value
+		dataType: double
+		sourceProviderType: float
+		lineageTag: c2d65c73-fc92-4ad1-830b-9e387e6274e1
+		sourceLineageTag: min_value
+		summarizeBy: none
+		sourceColumn: min_value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column max_value
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 208fe47f-8fcb-45cb-b93c-6547df0e41ef
+		sourceLineageTag: max_value
+		summarizeBy: none
+		sourceColumn: max_value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column prev_avg_value
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 706e1543-2d41-40c9-a5ad-8b7a12111c68
+		sourceLineageTag: prev_avg_value
+		summarizeBy: none
+		sourceColumn: prev_avg_value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column dod_pct_change
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 33843c0c-9cde-4bd6-8403-89955056e9c4
+		sourceLineageTag: dod_pct_change
+		summarizeBy: none
+		sourceColumn: dod_pct_change
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition dod_pollutant_analytics = entity
+		mode: directLake
+		source
+			entityName: dod_pollutant_analytics
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

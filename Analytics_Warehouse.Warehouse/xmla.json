@@ -13,6 +13,320 @@
     "sourceQueryCulture": "en-US",
     "tables": [
       {
+        "name": "daily_country_pollutant_rank",
+        "sourceLineageTag": "[dbo].[daily_country_pollutant_rank]",
+        "columns": [
+          {
+            "name": "client_day",
+            "dataType": "dateTime",
+            "sourceColumn": "client_day",
+            "formatString": "General Date",
+            "sourceProviderType": "date",
+            "sourceLineageTag": "client_day",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "country_name",
+            "dataType": "string",
+            "sourceColumn": "country_name",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "country_name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "pt_id",
+            "dataType": "string",
+            "sourceColumn": "pt_id",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "pt_id",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "total_value",
+            "dataType": "double",
+            "sourceColumn": "total_value",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "total_value",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "rank",
+            "dataType": "int64",
+            "sourceColumn": "rank",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "rank",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "daily_country_pollutant_rank",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "daily_pollutant_threshhold",
+        "sourceLineageTag": "[dbo].[daily_pollutant_threshhold]",
+        "columns": [
+          {
+            "name": "country_name",
+            "dataType": "string",
+            "sourceColumn": "country_name",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "country_name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "pt_id",
+            "dataType": "string",
+            "sourceColumn": "pt_id",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "pt_id",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "value",
+            "dataType": "double",
+            "sourceColumn": "value",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "value",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "client_day",
+            "dataType": "dateTime",
+            "sourceColumn": "client_day",
+            "formatString": "General Date",
+            "sourceProviderType": "date",
+            "sourceLineageTag": "client_day",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "above_threshold",
+            "dataType": "boolean",
+            "sourceColumn": "above_threshold",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "bit",
+            "sourceLineageTag": "above_threshold",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "daily_pollutant_threshhold",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "daily_top_polluted_areas",
+        "sourceLineageTag": "[dbo].[daily_top_polluted_areas]",
+        "columns": [
+          {
+            "name": "client_day",
+            "dataType": "dateTime",
+            "sourceColumn": "client_day",
+            "formatString": "General Date",
+            "sourceProviderType": "date",
+            "sourceLineageTag": "client_day",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "country_name",
+            "dataType": "string",
+            "sourceColumn": "country_name",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "country_name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "area",
+            "dataType": "string",
+            "sourceColumn": "area",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "area",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "pt_id",
+            "dataType": "string",
+            "sourceColumn": "pt_id",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "pt_id",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "total_value",
+            "dataType": "double",
+            "sourceColumn": "total_value",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "total_value",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "rank",
+            "dataType": "int64",
+            "sourceColumn": "rank",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "rank",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "daily_top_polluted_areas",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
         "name": "dim_location",
         "sourceLineageTag": "[dbo].[dim_location]",
         "columns": [
@@ -306,6 +620,177 @@
             "source": {
               "type": "entity",
               "entityName": "dim_provider",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "dod_pollutant_analytics",
+        "sourceLineageTag": "[dbo].[dod_pollutant_analytics]",
+        "columns": [
+          {
+            "name": "client_day",
+            "dataType": "dateTime",
+            "sourceColumn": "client_day",
+            "formatString": "General Date",
+            "sourceProviderType": "date",
+            "sourceLineageTag": "client_day",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "country_name",
+            "dataType": "string",
+            "sourceColumn": "country_name",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "country_name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "pt_id",
+            "dataType": "string",
+            "sourceColumn": "pt_id",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "pt_id",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "pollutant_name",
+            "dataType": "string",
+            "sourceColumn": "pollutant_name",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "pollutant_name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "avg_value",
+            "dataType": "double",
+            "sourceColumn": "avg_value",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "avg_value",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "min_value",
+            "dataType": "double",
+            "sourceColumn": "min_value",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "min_value",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "max_value",
+            "dataType": "double",
+            "sourceColumn": "max_value",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "max_value",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "prev_avg_value",
+            "dataType": "double",
+            "sourceColumn": "prev_avg_value",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "prev_avg_value",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "dod_pct_change",
+            "dataType": "double",
+            "sourceColumn": "dod_pct_change",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "dod_pct_change",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "dod_pollutant_analytics",
               "expressionSource": "DatabaseQuery",
               "schemaName": "dbo"
             }
@@ -616,6 +1101,546 @@
         ]
       },
       {
+        "name": "incremental_fact_table",
+        "sourceLineageTag": "[dbo].[incremental_fact_table]",
+        "columns": [
+          {
+            "name": "country_name",
+            "dataType": "string",
+            "sourceColumn": "country_name",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "country_name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "record_id",
+            "dataType": "string",
+            "sourceColumn": "record_id",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "record_id",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "sensor_id",
+            "dataType": "string",
+            "sourceColumn": "sensor_id",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "sensor_id",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "location_id",
+            "dataType": "string",
+            "sourceColumn": "location_id",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "location_id",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "provider_id",
+            "dataType": "string",
+            "sourceColumn": "provider_id",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "provider_id",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "owner_id",
+            "dataType": "string",
+            "sourceColumn": "owner_id",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "owner_id",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "pt_id",
+            "dataType": "string",
+            "sourceColumn": "pt_id",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "pt_id",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "value",
+            "dataType": "double",
+            "sourceColumn": "value",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "value",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "Reading_Start_UTC",
+            "dataType": "dateTime",
+            "sourceColumn": "Reading_Start_UTC",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "Reading_Start_UTC",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Reading_End_UTC",
+            "dataType": "dateTime",
+            "sourceColumn": "Reading_End_UTC",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "Reading_End_UTC",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Reading_Start_Local",
+            "dataType": "dateTime",
+            "sourceColumn": "Reading_Start_Local",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "Reading_Start_Local",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Reading_End_Local",
+            "dataType": "dateTime",
+            "sourceColumn": "Reading_End_Local",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "Reading_End_Local",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "client_day",
+            "dataType": "dateTime",
+            "sourceColumn": "client_day",
+            "formatString": "General Date",
+            "sourceProviderType": "date",
+            "sourceLineageTag": "client_day",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "incremental_fact_table",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "incremental_summary_area",
+        "sourceLineageTag": "[dbo].[incremental_summary_area]",
+        "columns": [
+          {
+            "name": "country_name",
+            "dataType": "string",
+            "sourceColumn": "country_name",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "country_name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "country_code",
+            "dataType": "string",
+            "sourceColumn": "country_code",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "country_code",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "sensor_id",
+            "dataType": "string",
+            "sourceColumn": "sensor_id",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "sensor_id",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "location_id",
+            "dataType": "string",
+            "sourceColumn": "location_id",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "location_id",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Uptime_Start",
+            "dataType": "dateTime",
+            "sourceColumn": "Uptime_Start",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "Uptime_Start",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Uptime_End",
+            "dataType": "dateTime",
+            "sourceColumn": "Uptime_End",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "Uptime_End",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Longitude",
+            "dataType": "double",
+            "sourceColumn": "Longitude",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "Longitude",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "Latitude",
+            "dataType": "double",
+            "sourceColumn": "Latitude",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "Latitude",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "client_day",
+            "dataType": "dateTime",
+            "sourceColumn": "client_day",
+            "formatString": "General Date",
+            "sourceProviderType": "date",
+            "sourceLineageTag": "client_day",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "incremental_summary_area",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "provider_count_daily",
+        "sourceLineageTag": "[dbo].[provider_count_daily]",
+        "columns": [
+          {
+            "name": "client_day",
+            "dataType": "dateTime",
+            "sourceColumn": "client_day",
+            "formatString": "General Date",
+            "sourceProviderType": "date",
+            "sourceLineageTag": "client_day",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "country_name",
+            "dataType": "string",
+            "sourceColumn": "country_name",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "country_name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "pt_id",
+            "dataType": "string",
+            "sourceColumn": "pt_id",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "pt_id",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "total_providers",
+            "dataType": "int64",
+            "sourceColumn": "total_providers",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "total_providers",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "provider_count_daily",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "sensor_count_daily",
+        "sourceLineageTag": "[dbo].[sensor_count_daily]",
+        "columns": [
+          {
+            "name": "client_day",
+            "dataType": "dateTime",
+            "sourceColumn": "client_day",
+            "formatString": "General Date",
+            "sourceProviderType": "date",
+            "sourceLineageTag": "client_day",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "country_name",
+            "dataType": "string",
+            "sourceColumn": "country_name",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "country_name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "pt_id",
+            "dataType": "string",
+            "sourceColumn": "pt_id",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "pt_id",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "total_sensors",
+            "dataType": "int64",
+            "sourceColumn": "total_sensors",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "total_sensors",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "sensor_count_daily",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
         "name": "sensor_count_yearly",
         "sourceLineageTag": "[dbo].[sensor_count_yearly]",
         "columns": [
@@ -789,6 +1814,191 @@
             "source": {
               "type": "entity",
               "entityName": "summary_area",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "summary_pollutant_hour",
+        "sourceLineageTag": "[dbo].[summary_pollutant_hour]",
+        "columns": [
+          {
+            "name": "country_name",
+            "dataType": "string",
+            "sourceColumn": "country_name",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "country_name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Area",
+            "dataType": "string",
+            "sourceColumn": "Area",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Area",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "locality",
+            "dataType": "string",
+            "sourceColumn": "locality",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "locality",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "timezone",
+            "dataType": "string",
+            "sourceColumn": "timezone",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "timezone",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "hour_utc",
+            "dataType": "int64",
+            "sourceColumn": "hour_utc",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "hour_utc",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "hour_local",
+            "dataType": "int64",
+            "sourceColumn": "hour_local",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "hour_local",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "units",
+            "dataType": "string",
+            "sourceColumn": "units",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "units",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "pollutant_name",
+            "dataType": "string",
+            "sourceColumn": "pollutant_name",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "pollutant_name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "pt_id",
+            "dataType": "string",
+            "sourceColumn": "pt_id",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "pt_id",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "client_day",
+            "dataType": "dateTime",
+            "sourceColumn": "client_day",
+            "formatString": "General Date",
+            "sourceProviderType": "date",
+            "sourceLineageTag": "client_day",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "value",
+            "dataType": "double",
+            "sourceColumn": "value",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "value",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "summary_pollutant_hour",
               "expressionSource": "DatabaseQuery",
               "schemaName": "dbo"
             }

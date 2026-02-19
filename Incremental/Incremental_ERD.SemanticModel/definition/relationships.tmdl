@@ -1,0 +1,32 @@
+relationship 3f1ceda7-e39b-27ac-68fd-d702247491eb
+	fromColumn: incremental_fact_table.location_id
+	toColumn: dim_location.location_id
+
+relationship 8685d0ee-fbab-3f57-0668-d9825ad08c3f
+	fromColumn: incremental_fact_table.owner_id
+	toColumn: dim_owner.owner_id
+
+relationship 18bfac24-fb31-c3e4-6efd-b60c6ea179c8
+	fromColumn: incremental_fact_table.provider_id
+	toColumn: dim_provider.provider_id
+
+relationship ef10b947-92f1-086a-20c8-48b00e7a1958
+	fromColumn: incremental_fact_table.pt_id
+	toColumn: dim_pollutant.country_id
+
+relationship 2df85a38-91d5-affa-7f8f-a6d10dc95abb
+	fromColumn: summary_pollutant_hour.pt_id
+	toColumn: dim_pollutant.pollutant_type_id
+
+relationship 99f9eb4d-9675-ece8-999f-63e554160200
+	fromColumn: dim_pollutant.pollutant_type_id
+	toColumn: dod_pollutant_analytics.pt_id
+
+relationship 6b2ce6be-8aa7-967b-abfe-a618938a03b5
+	fromColumn: summary_pollutant_hour.country_name
+	toColumn: provider_count_daily.country_name
+
+relationship a3eae168-899f-cd6a-3a24-6ec98846645c
+	fromColumn: summary_pollutant_hour.country_name
+	toColumn: sensor_count_daily.country_name
+

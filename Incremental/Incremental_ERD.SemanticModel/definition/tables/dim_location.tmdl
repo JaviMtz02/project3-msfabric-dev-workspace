@@ -1,10 +1,11 @@
 table dim_location
-	lineageTag: f864ae8d-a659-4ad4-beb1-07633cbf9813
+	lineageTag: 736f0cca-e655-4a1b-9769-ecbe4bb7d67f
 	sourceLineageTag: [dbo].[dim_location]
 
 	column location_id
 		dataType: string
-		lineageTag: e3a24f6b-d59f-4e2e-a79e-14af12cabd23
+		sourceProviderType: varchar(8000)
+		lineageTag: c09756b0-8bbd-4697-bc35-2b24fcd24458
 		sourceLineageTag: location_id
 		summarizeBy: none
 		sourceColumn: location_id
@@ -13,7 +14,8 @@ table dim_location
 
 	column area
 		dataType: string
-		lineageTag: a57d53d3-c7cf-491f-a9ff-89bd62475fcc
+		sourceProviderType: varchar(8000)
+		lineageTag: c9511a06-cd26-4223-ab69-1b76a04777dd
 		sourceLineageTag: area
 		summarizeBy: none
 		sourceColumn: area
@@ -22,7 +24,8 @@ table dim_location
 
 	column locality
 		dataType: string
-		lineageTag: 069e38be-8f2c-4720-b7fc-dcedb28ee850
+		sourceProviderType: varchar(8000)
+		lineageTag: fdea937f-c550-4067-8c3d-3eff3230b2c4
 		sourceLineageTag: locality
 		summarizeBy: none
 		sourceColumn: locality
@@ -31,7 +34,8 @@ table dim_location
 
 	column timezone
 		dataType: string
-		lineageTag: 69f931e3-6d01-430f-bbed-420cd8c0e278
+		sourceProviderType: varchar(8000)
+		lineageTag: b0abbf26-533a-4f1a-8445-d8f2ef0c83d5
 		sourceLineageTag: timezone
 		summarizeBy: none
 		sourceColumn: timezone
@@ -40,7 +44,8 @@ table dim_location
 
 	column country_name
 		dataType: string
-		lineageTag: 3909e08a-5ff9-4471-af89-ea1bb4e2824b
+		sourceProviderType: varchar(8000)
+		lineageTag: b98d190a-759f-49a1-bf3d-8d99b372de51
 		sourceLineageTag: country_name
 		summarizeBy: none
 		sourceColumn: country_name
@@ -52,5 +57,7 @@ table dim_location
 		source
 			entityName: dim_location
 			schemaName: dbo
-			expressionSource: 'DirectLake - Analytics_Warehouse'
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
 

@@ -105,7 +105,7 @@ from pyspark.sql.window import Window
 
 # PARAMETERS CELL ********************
 
-target_date = '2026-02-17'
+target_date = '2026-02-18'
 
 # METADATA ********************
 
@@ -427,7 +427,7 @@ if spark.catalog.tableExists(target_summary_table):
     .execute()
     
 else:
-    sensor_count_daily.write \
+    provider_count_daily.write \
         .format("delta") \
         .mode("overwrite") \
         .partitionBy("client_day", 'country_name') \
@@ -453,8 +453,6 @@ target_summary_table = "dod_pollutant_analytics"
 # This provides enough history for the LAG() to work without scanning the entire table.
 summary_df = spark.read.table("summary_pollutant_hour") \
     .filter(col("client_day") >= date_sub(to_date(lit(target_day_only)), 2))
-
-display(summary_df)
 
 # 2. Define Window: 
 dod_window = Window.partitionBy('country_name', "pt_id") \
@@ -728,8 +726,8 @@ if spark.catalog.tableExists(target_summary_table):
         """
         target.country_name = updates.country_name AND
         target.pt_id = updates.pt_id AND
-        target.value = updates.value
-        target.client_day = updates.client_day
+        target.value = updates.value AND
+        target.client_day = updates.client_day AND
         target.above_threshold = updates.above_threshold
         """
     ) \

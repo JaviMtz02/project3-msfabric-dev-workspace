@@ -10,36 +10,6 @@
       "queryName": "p_client_day",
       "loadEnabled": false
     },
-    "incremental_fact_table": {
-      "queryId": "efaeb4c3-543e-4393-bfee-dadaaf3b2d28",
-      "queryName": "incremental_fact_table"
-    },
-    "incremental_summary_area": {
-      "queryId": "f081432b-fb6a-40c1-ab64-ff1243cfafa1",
-      "queryName": "incremental_summary_area"
-    },
-    "summary_pollutant_hour": {
-      "queryId": "a83810e4-94c5-43c9-90c9-fc563cf95f77",
-      "queryName": "summary_pollutant_hour"
-    },
-    "incremental_fact_table_DataDestination": {
-      "queryId": "c09df06c-8e7d-44dc-95ec-2bd41baa3462",
-      "queryName": "incremental_fact_table_DataDestination",
-      "isHidden": true,
-      "loadEnabled": false
-    },
-    "incremental_summary_area_DataDestination": {
-      "queryId": "c656ce5e-1f28-4070-9d13-3e5e88e44bc7",
-      "queryName": "incremental_summary_area_DataDestination",
-      "isHidden": true,
-      "loadEnabled": false
-    },
-    "summary_pollutant_hour_DataDestination": {
-      "queryId": "886001de-6ef0-4015-a9ea-4119735272af",
-      "queryName": "summary_pollutant_hour_DataDestination",
-      "isHidden": true,
-      "loadEnabled": false
-    },
     "sensor_count_daily": {
       "queryId": "9760b768-ef85-4514-8cc3-857215dafa68",
       "queryName": "sensor_count_daily"
@@ -56,47 +26,77 @@
       "queryId": "b5ecb7d3-c447-4724-99dd-38299f466984",
       "queryName": "dod_pollutant_analytics"
     },
+    "daily_pollutant_threshhold": {
+      "queryId": "b5aa595f-0e3f-4761-871f-557e4ab50741",
+      "queryName": "daily_pollutant_threshhold"
+    },
+    "incremental_fact_table": {
+      "queryId": "1f92a88a-4d9e-48ed-a610-8328fd76a81c",
+      "queryName": "incremental_fact_table"
+    },
+    "incremental_summary_area": {
+      "queryId": "d7ff53d4-c001-47c8-b20f-2993d4ecc405",
+      "queryName": "incremental_summary_area"
+    },
+    "summary_pollutant_hour": {
+      "queryId": "5e12bc54-8d99-43a4-8b50-a7642ec6d2a5",
+      "queryName": "summary_pollutant_hour"
+    },
     "provider_count_daily": {
-      "queryId": "83bb0d28-9df1-413b-97f1-e45ed490a11f",
+      "queryId": "dc0ce5ac-8cac-47de-b4d7-dd749c9479da",
       "queryName": "provider_count_daily"
     },
+    "provider_count_daily_DataDestination": {
+      "queryId": "ab239770-0bf0-4078-8db2-a2050a1ffa16",
+      "queryName": "provider_count_daily_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
     "sensor_count_daily_DataDestination": {
-      "queryId": "6e167af6-7d53-4734-b254-4662d7e95977",
+      "queryId": "7f639e3f-9ea1-449a-a410-d76f8cb59871",
       "queryName": "sensor_count_daily_DataDestination",
       "isHidden": true,
       "loadEnabled": false
     },
     "daily_country_pollutant_rank_DataDestination": {
-      "queryId": "577f250d-b791-4271-a62c-aa5b1a370b50",
+      "queryId": "c74d2f5c-f756-407f-a469-fb6580c3cb66",
       "queryName": "daily_country_pollutant_rank_DataDestination",
       "isHidden": true,
       "loadEnabled": false
     },
     "daily_top_polluted_areas_DataDestination": {
-      "queryId": "e431d8ef-3daa-47fa-a152-8d0fde78f8df",
+      "queryId": "fcd2c6dd-aa96-442c-8b8b-2a541975b277",
       "queryName": "daily_top_polluted_areas_DataDestination",
       "isHidden": true,
       "loadEnabled": false
     },
     "dod_pollutant_analytics_DataDestination": {
-      "queryId": "39f8a17f-a83d-4bd8-bfdc-8b9d22ee8ae8",
+      "queryId": "5a33c9f8-8312-4248-a002-311161f24349",
       "queryName": "dod_pollutant_analytics_DataDestination",
       "isHidden": true,
       "loadEnabled": false
     },
-    "provider_count_daily_DataDestination": {
-      "queryId": "37dc83ab-6291-4494-bc8f-d32b0c35b112",
-      "queryName": "provider_count_daily_DataDestination",
+    "daily_pollutant_threshhold_DataDestination": {
+      "queryId": "01e042f6-b126-4b25-ac12-242114965fd0",
+      "queryName": "daily_pollutant_threshhold_DataDestination",
       "isHidden": true,
       "loadEnabled": false
     },
-    "daily_pollutant_threshhold": {
-      "queryId": "b5aa595f-0e3f-4761-871f-557e4ab50741",
-      "queryName": "daily_pollutant_threshhold"
+    "incremental_fact_table_DataDestination": {
+      "queryId": "4f17d116-aadc-4a31-841f-07f7b97b4927",
+      "queryName": "incremental_fact_table_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
     },
-    "daily_pollutant_threshhold_DataDestination": {
-      "queryId": "b7e0dfd1-b8eb-4bcf-9df0-fc967549a40b",
-      "queryName": "daily_pollutant_threshhold_DataDestination",
+    "incremental_summary_area_DataDestination": {
+      "queryId": "11ac46fa-1784-4b6c-bd8d-e6f9bda828ba",
+      "queryName": "incremental_summary_area_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "summary_pollutant_hour_DataDestination": {
+      "queryId": "975db889-57e2-4167-ad0f-38efc6d1a89b",
+      "queryName": "summary_pollutant_hour_DataDestination",
       "isHidden": true,
       "loadEnabled": false
     }

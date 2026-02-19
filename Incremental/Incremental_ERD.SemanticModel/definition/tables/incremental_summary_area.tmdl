@@ -1,19 +1,31 @@
 table incremental_summary_area
-	lineageTag: 54bbffd0-7396-42de-9c27-fff54a49d8c8
+	lineageTag: 5cf40edd-2721-4fbe-88fd-ba0e29c6d130
 	sourceLineageTag: [dbo].[incremental_summary_area]
 
-	column parent_country_id
+	column country_name
 		dataType: string
-		lineageTag: 9b4a72b6-f056-4128-84c3-b698ad15eae1
-		sourceLineageTag: parent_country_id
+		sourceProviderType: varchar(8000)
+		lineageTag: 6d51f9e8-85ff-47d4-a0f4-c16d1c5ff2e8
+		sourceLineageTag: country_name
 		summarizeBy: none
-		sourceColumn: parent_country_id
+		sourceColumn: country_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column country_code
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: f43e53d0-7aeb-4592-82b7-deb4272a4ced
+		sourceLineageTag: country_code
+		summarizeBy: none
+		sourceColumn: country_code
 
 		annotation SummarizationSetBy = Automatic
 
 	column sensor_id
 		dataType: string
-		lineageTag: 21f5bd13-ac70-4bf5-b1cf-bfe0a64039df
+		sourceProviderType: varchar(8000)
+		lineageTag: 854998a4-8e51-417e-b60b-698d01de2078
 		sourceLineageTag: sensor_id
 		summarizeBy: none
 		sourceColumn: sensor_id
@@ -22,26 +34,19 @@ table incremental_summary_area
 
 	column location_id
 		dataType: string
-		lineageTag: 0a101ea0-6f22-4a93-9fb7-5857bcaed01d
+		sourceProviderType: varchar(8000)
+		lineageTag: afa41c22-10e8-494b-a667-bce7c198d2e1
 		sourceLineageTag: location_id
 		summarizeBy: none
 		sourceColumn: location_id
 
 		annotation SummarizationSetBy = Automatic
 
-	column country_code
-		dataType: string
-		lineageTag: 1c7a127c-26b5-4b12-b60a-fc006de90924
-		sourceLineageTag: country_code
-		summarizeBy: none
-		sourceColumn: country_code
-
-		annotation SummarizationSetBy = Automatic
-
 	column Uptime_Start
 		dataType: dateTime
 		formatString: General Date
-		lineageTag: 95098aba-6111-4123-9628-911fddc54ae9
+		sourceProviderType: datetime2
+		lineageTag: b6ead972-7976-4585-beff-81b265579c59
 		sourceLineageTag: Uptime_Start
 		summarizeBy: none
 		sourceColumn: Uptime_Start
@@ -51,7 +56,8 @@ table incremental_summary_area
 	column Uptime_End
 		dataType: dateTime
 		formatString: General Date
-		lineageTag: 00165553-5e99-4da3-b562-52eddda0bf68
+		sourceProviderType: datetime2
+		lineageTag: f7ab74ac-7ad6-401c-bc7c-1dd45a992e92
 		sourceLineageTag: Uptime_End
 		summarizeBy: none
 		sourceColumn: Uptime_End
@@ -60,9 +66,10 @@ table incremental_summary_area
 
 	column Longitude
 		dataType: double
-		lineageTag: 19ee142f-e305-4585-b249-ced3e4b2403d
+		sourceProviderType: float
+		lineageTag: 14cec71d-ddc1-4dc5-9972-5702e3907f1c
 		sourceLineageTag: Longitude
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: Longitude
 
 		annotation SummarizationSetBy = Automatic
@@ -71,9 +78,10 @@ table incremental_summary_area
 
 	column Latitude
 		dataType: double
-		lineageTag: ccffedeb-caae-4d5e-b32e-31e1de605811
+		sourceProviderType: float
+		lineageTag: fcd81ce4-4773-4f59-aba8-51721107c601
 		sourceLineageTag: Latitude
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: Latitude
 
 		annotation SummarizationSetBy = Automatic
@@ -83,7 +91,8 @@ table incremental_summary_area
 	column client_day
 		dataType: dateTime
 		formatString: General Date
-		lineageTag: 62255d32-429e-4614-b593-ec0542d705a1
+		sourceProviderType: date
+		lineageTag: 13b5d682-79d4-4515-a86c-2062c2cc6255
 		sourceLineageTag: client_day
 		summarizeBy: none
 		sourceColumn: client_day
@@ -95,5 +104,7 @@ table incremental_summary_area
 		source
 			entityName: incremental_summary_area
 			schemaName: dbo
-			expressionSource: 'DirectLake - Analytics_Warehouse'
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
 
